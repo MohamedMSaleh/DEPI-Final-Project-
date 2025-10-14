@@ -1,12 +1,9 @@
-2025-09-01 17:37:42,378 INFO Starting generator. Sensors=50 interval=5.00s duration=None
-2025-09-01 17:38:02,417 INFO Spike injected on co2_002: 389.914 -> 1455.241
-2025-09-01 17:38:03,763 INFO Spike injected on humi_040: 44.532 -> 134.125
-2025-09-01 17:38:12,204 INFO Signal 2 received, stopping generator...
-2025-09-01 17:38:12,381 INFO Shutting down writer and producer.
-2025-09-01 17:38:12,383 INFO Generator terminated. Outputs in: C:\Users\thatsupportguy\Desktop\DEPI Project\output
-2025-09-01 17:38:32,055 INFO Starting generator. Sensors=50 interval=5.00s duration=None
-2025-09-01 17:38:37,616 INFO Spike injected on co2_017: 386.945 -> 1201.377
-2025-09-01 17:38:43,887 INFO Signal 2 received, stopping generator...
-2025-09-01 17:38:46,204 INFO Signal 2 received, stopping generator...
-2025-09-01 17:38:47,058 INFO Shutting down writer and producer.
-2025-09-01 17:38:47,060 INFO Generator terminated. Outputs in: C:\Users\thatsupportguy\Desktop\DEPI Project\output
+2025-10-14 23:09:31,524 [INFO] - No Event Hubs connection string provided. Writing to local directory: output
+2025-10-14 23:09:31,527 [INFO] - Starting generator: 20 sensors, 5.0s interval, duration: unlimiteds
+2025-10-14 23:10:01,532 [INFO] - Spike injected for ws_cairo_011: temp changed from 19.35 to 34.48
+2025-10-14 23:10:43,916 [INFO] - Signal 2 received. Initiating shutdown...
+2025-10-14 23:10:43,916 [INFO] - Stopping generator and closing resources.
+2025-10-14 23:10:45,057 [INFO] - Signal 2 received. Initiating shutdown...
+2025-10-14 23:10:45,057 [INFO] - Stopping generator and closing resources.
+2025-10-14 23:10:46,532 [INFO] - Stopping generator and closing resources.
+2025-10-14 23:10:46,533 [INFO] - Generator has finished execution.
