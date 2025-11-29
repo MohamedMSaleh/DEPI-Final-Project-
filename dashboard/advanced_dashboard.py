@@ -294,15 +294,6 @@ app.layout = html.Div(
                             )
                         ]),
                         html.Div([
-                            html.Label('Sensor Type:', style={'color': COLORS['text_secondary'], 'fontSize': '12px', 'marginBottom': '5px', 'display': 'block'}),
-                            dcc.Dropdown(
-                                id='sensor-filter',
-                                placeholder='All Sensors',
-                                style={'width': '200px'},
-                                className='custom-dropdown'
-                            )
-                        ]),
-                        html.Div([
                             html.Label('Time Range:', style={'color': COLORS['text_secondary'], 'fontSize': '12px', 'marginBottom': '5px', 'display': 'block'}),
                             dcc.Dropdown(
                                 id='time-filter',
@@ -622,8 +613,7 @@ app.layout = html.Div(
 # Initialize filters
 @app.callback(
     [Output('city-filter', 'options'),
-     Output('city-filter', 'value'),
-     Output('sensor-filter', 'options')],
+     Output('city-filter', 'value')],
     [Input('interval-update', 'n_intervals')]
 )
 def update_filters(n):
@@ -640,17 +630,11 @@ def update_filters(n):
         # Set default to Cairo if available, otherwise first city
         default_city = 'Cairo' if any(city[0] == 'Cairo' for city in cities) else (cities[0][0] if cities else None)
         
-        # Get unique sensor types
-        sensors = session.query(DimSensor.sensor_type).distinct().all()
-        sensor_options = [{'label': 'All Sensors', 'value': 'all'}] + [
-            {'label': sensor[0], 'value': sensor[0]} for sensor in sensors
-        ]
-        
-        return city_options, default_city, sensor_options
+        return city_options, default_city
         
     except Exception as e:
         print(f"Error updating filters: {e}")
-        return [{'label': 'All', 'value': 'all'}], 'Cairo', [{'label': 'All', 'value': 'all'}]
+        return [{'label': 'All', 'value': 'all'}], 'Cairo'
     finally:
         session.close()
 
@@ -688,10 +672,9 @@ def update_header_status(n):
     [Input('interval-update', 'n_intervals'),
      Input('refresh-button', 'n_clicks'),
      Input('city-filter', 'value'),
-     Input('sensor-filter', 'value'),
      Input('time-filter', 'value')]
 )
-def update_kpi_cards(n, clicks, city, sensor, time_range):
+def update_kpi_cards(n, clicks, city, time_range):
     """Update KPI summary cards"""
     session = get_session(DB_ENGINE)
     
@@ -708,8 +691,6 @@ def update_kpi_cards(n, clicks, city, sensor, time_range):
         # Apply filters
         if city and city != 'all':
             query = query.filter(DimLocation.city_name == city)
-        if sensor and sensor != 'all':
-            query = query.filter(DimSensor.sensor_type == sensor)
         
         # Time filter - only apply if not 'all'
         if time_range and time_range != 'all':
@@ -788,10 +769,9 @@ def update_kpi_cards(n, clicks, city, sensor, time_range):
     [Input('interval-update', 'n_intervals'),
      Input('refresh-button', 'n_clicks'),
      Input('city-filter', 'value'),
-     Input('sensor-filter', 'value'),
      Input('time-filter', 'value')]
 )
-def update_timeseries(n, clicks, city, sensor, time_range):
+def update_timeseries(n, clicks, city, time_range):
     """Update temperature timeseries chart"""
     session = get_session(DB_ENGINE)
     
@@ -812,8 +792,6 @@ def update_timeseries(n, clicks, city, sensor, time_range):
         # Apply filters
         if city and city != 'all':
             query = query.filter(DimLocation.city_name == city)
-        if sensor and sensor != 'all':
-            query = query.filter(DimSensor.sensor_type == sensor)
         
         # Time filter - only apply if not 'all'
         if time_range and time_range != 'all':
