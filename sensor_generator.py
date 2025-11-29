@@ -60,6 +60,14 @@ try:
 except ImportError:
     EVENT_HUBS_AVAILABLE = False
 
+# Optional Kafka import
+try:
+    sys.path.insert(0, str(Path(__file__).parent))
+    from streaming.kafka_broker import get_broker
+    KAFKA_AVAILABLE = True
+except ImportError:
+    KAFKA_AVAILABLE = False
+
 # ---------------------------
 # Configuration dataclasses
 # ---------------------------
@@ -389,6 +397,8 @@ class SensorGenerator:
         interval_s: float = DEFAULT_INTERVAL,
         anomaly_cfg: Optional[AnomalyConfig] = None,
         event_hub_producer: Optional[EventHubProducerClient] = None,
+        kafka_broker = None,
+        kafka_topic: str = "sensor_data",
         logger: Optional[logging.Logger] = None,
     ):
         self.sensors = sensors
@@ -397,6 +407,8 @@ class SensorGenerator:
         self.interval = interval_s
         self.anomaly_cfg = anomaly_cfg or AnomalyConfig(0.002, 0.001, 0.001, 1.5, 60.0)
         self.event_hub_producer = event_hub_producer
+        self.kafka_broker = kafka_broker
+        self.kafka_topic = kafka_topic
         self.logger = logger or logging.getLogger("sensor_gen")
         
         # State for maintaining continuity
@@ -560,6 +572,13 @@ class SensorGenerator:
             if self.writer:
                 self.writer.write(event)
             
+            # Publish to Kafka broker
+            if self.kafka_broker:
+                try:
+                    self.kafka_broker.publish(self.kafka_topic, event)
+                except Exception as e:
+                    self.logger.error(f"Error publishing to Kafka: {e}")
+            
             if self.event_hub_producer:
                 # This should be run in an async context if we were to use the async producer
                 # For simplicity, we'll use the sync producer's send_batch method in a blocking way
@@ -638,6 +657,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--event-hubs-conn-str", type=str, default=None, help="Azure Event Hubs connection string.")
     parser.add_argument("--event-hub-name", type=str, default=None, help="Name of the Azure Event Hub.")
     
+    # Kafka settings
+    parser.add_argument("--use-kafka", action="store_true", help="Enable Kafka message broker for streaming.")
+    parser.add_argument("--kafka-topic", type=str, default="sensor_data", help="Kafka topic name for sensor data.")
+    
     # Anomaly settings
     parser.add_argument("--anomaly-spike-rate", type=float, default=0.002, help="Rate of spike anomalies (reduced for realism).")
     parser.add_argument("--anomaly-stuck-rate", type=float, default=0.001, help="Rate of stuck sensor anomalies.")
@@ -655,10 +678,29 @@ def main():
     # --- Configure Outputs ---
     writer = None
     event_hub_producer = None
+    kafka_broker = None
+
+    # Kafka broker setup
+    if args.use_kafka:
+        if not KAFKA_AVAILABLE:
+            logger.error("Kafka requested but kafka_broker module not available.")
+            sys.exit(1)
+        try:
+            kafka_broker = get_broker()
+            kafka_broker.create_topic(args.kafka_topic)
+            logger.info(f"[OK] Connected to Kafka broker, topic: {args.kafka_topic}")
+        except Exception as e:
+            logger.error(f"Failed to initialize Kafka broker: {e}")
+            sys.exit(1)
 
     # Local file writer
-    if not args.event_hubs_conn_str:
-        logger.info(f"No Event Hubs connection string provided. Writing to local directory: {args.output_dir}")
+    if not args.event_hubs_conn_str and not args.use_kafka:
+        logger.info(f"No Event Hubs or Kafka configured. Writing to local directory: {args.output_dir}")
+        outdir = Path(args.output_dir)
+        writer = OutputWriter(outdir, args.jsonl_file, args.csv_file, logger)
+    elif not args.event_hubs_conn_str:
+        # Using Kafka, but also write to files for backup
+        logger.info(f"Using Kafka for streaming. Also writing to local directory: {args.output_dir}")
         outdir = Path(args.output_dir)
         writer = OutputWriter(outdir, args.jsonl_file, args.csv_file, logger)
     
@@ -699,6 +741,8 @@ def main():
         interval_s=args.interval,
         anomaly_cfg=anomaly_cfg,
         event_hub_producer=event_hub_producer,
+        kafka_broker=kafka_broker,
+        kafka_topic=args.kafka_topic,
         logger=logger
     )
 
