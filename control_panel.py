@@ -608,6 +608,14 @@ class ProfessionalControlPanel:
                 "desc": "Direct database writer (manual)",
                 "command": [self.manager.python_exe, "inject_live_data.py"],
                 "auto_start": False
+            },
+            {
+                "name": "ML Temperature Predictor",
+                "key": "ml_predictor",
+                "icon": "🧠",
+                "desc": "AI-based temperature forecasting",
+                "command": [self.manager.python_exe, "ml/temperature_predictor.py"],
+                "auto_start": False
             }
         ]
         

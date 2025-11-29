@@ -405,6 +405,43 @@ app.layout = html.Div(
                     ]
                 ),
                 
+                # ML Predictions Row
+                html.Div(
+                    style={
+                        'display': 'grid',
+                        'gridTemplateColumns': '1fr 1fr',
+                        'gap': '15px',
+                        'marginBottom': '20px'
+                    },
+                    children=[
+                        # Temperature Predictions Chart
+                        html.Div(
+                            style={**CARD_STYLE, 'overflow': 'hidden', 'minHeight': '400px'},
+                            children=[
+                                section_heading('fa-brain', 'AI Temperature Predictions', COLORS['gradient_end']),
+                                dcc.Loading(
+                                    type='circle',
+                                    color=COLORS['gradient_end'],
+                                    children=dcc.Graph(
+                                        id='ml-predictions-chart',
+                                        config={'displayModeBar': False, 'responsive': True},
+                                        style={'height': '350px', 'width': '100%'}
+                                    )
+                                )
+                            ]
+                        ),
+                        
+                        # Prediction Accuracy & Info
+                        html.Div(
+                            style={**CARD_STYLE, 'overflow': 'visible', 'minHeight': '400px'},
+                            children=[
+                                section_heading('fa-chart-simple', 'Model Performance', COLORS['accent_green']),
+                                html.Div(id='ml-accuracy-info', style={'flex': '1', 'overflow': 'visible'})
+                            ]
+                        )
+                    ]
+                ),
+                
                 # Gauges Row
                 html.Div(
                     style={
@@ -1451,6 +1488,303 @@ def update_readings_table(n, clicks, city):
         return html.Div(f'Error: {str(e)}', style={'color': COLORS['accent_red']})
     finally:
         session.close()
+
+# ML Predictions Chart
+@app.callback(
+    Output('ml-predictions-chart', 'figure'),
+    [Input('interval-update', 'n_intervals'),
+     Input('refresh-button', 'n_clicks'),
+     Input('city-filter', 'value')]
+)
+def update_ml_predictions(n, clicks, city):
+    """Update ML predictions chart showing actual vs predicted temperatures"""
+    import sqlite3
+    
+    try:
+        conn = sqlite3.connect(str(DB_PATH))
+        
+        # Check if predictions table exists
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='ml_temperature_predictions'")
+        if not cursor.fetchone():
+            conn.close()
+            return go.Figure().update_layout(
+                paper_bgcolor=COLORS['bg_card'],
+                plot_bgcolor=COLORS['bg_card'],
+                font={'color': COLORS['text_secondary']},
+                annotations=[{
+                    'text': 'No predictions available yet. Run ML model first.',
+                    'xref': 'paper',
+                    'yref': 'paper',
+                    'x': 0.5,
+                    'y': 0.5,
+                    'showarrow': False,
+                    'font': {'size': 14, 'color': COLORS['text_secondary']}
+                }]
+            )
+        
+        # Get actual temperatures (last 48 hours)
+        actual_query = """
+        SELECT 
+            t.ts as timestamp,
+            l.city_name,
+            AVG(f.temperature) as temperature
+        FROM fact_weather_reading f
+        JOIN dim_time t ON f.time_id = t.time_id
+        JOIN dim_location l ON f.location_id = l.location_id
+        WHERE t.ts >= datetime('now', '-48 hours')
+        """
+        if city and city != 'all':
+            actual_query += f" AND l.city_name = '{city}'"
+        actual_query += " GROUP BY l.city_name, strftime('%Y-%m-%d %H:00:00', t.ts) ORDER BY t.ts"
+        
+        actual_df = pd.read_sql_query(actual_query, conn)
+        
+        # Get predictions
+        pred_query = """
+        SELECT 
+            prediction_timestamp as timestamp,
+            city_name,
+            predicted_temp as temperature,
+            lower_bound,
+            upper_bound
+        FROM ml_temperature_predictions
+        WHERE created_at = (SELECT MAX(created_at) FROM ml_temperature_predictions)
+        """
+        if city and city != 'all':
+            pred_query += f" AND city_name = '{city}'"
+        pred_query += " ORDER BY prediction_timestamp"
+        
+        pred_df = pd.read_sql_query(pred_query, conn)
+        conn.close()
+        
+        if actual_df.empty and pred_df.empty:
+            return go.Figure().update_layout(
+                paper_bgcolor=COLORS['bg_card'],
+                plot_bgcolor=COLORS['bg_card'],
+                font={'color': COLORS['text_secondary']},
+                annotations=[{
+                    'text': 'No data available',
+                    'xref': 'paper',
+                    'yref': 'paper',
+                    'x': 0.5,
+                    'y': 0.5,
+                    'showarrow': False,
+                    'font': {'size': 14, 'color': COLORS['text_secondary']}
+                }]
+            )
+        
+        actual_df['timestamp'] = pd.to_datetime(actual_df['timestamp'])
+        pred_df['timestamp'] = pd.to_datetime(pred_df['timestamp'])
+        
+        fig = go.Figure()
+        
+        # Plot actual temperatures
+        for city_name in actual_df['city_name'].unique():
+            city_data = actual_df[actual_df['city_name'] == city_name]
+            fig.add_trace(go.Scatter(
+                x=city_data['timestamp'],
+                y=city_data['temperature'],
+                name=f'{city_name} (Actual)',
+                mode='lines+markers',
+                line={'width': 2},
+                marker={'size': 6}
+            ))
+        
+        # Plot predictions
+        for city_name in pred_df['city_name'].unique():
+            city_preds = pred_df[pred_df['city_name'] == city_name]
+            
+            # Prediction line
+            fig.add_trace(go.Scatter(
+                x=city_preds['timestamp'],
+                y=city_preds['temperature'],
+                name=f'{city_name} (Predicted)',
+                mode='lines+markers',
+                line={'width': 2, 'dash': 'dash'},
+                marker={'size': 4, 'symbol': 'diamond'}
+            ))
+            
+            # Confidence interval
+            fig.add_trace(go.Scatter(
+                x=city_preds['timestamp'].tolist() + city_preds['timestamp'].tolist()[::-1],
+                y=city_preds['upper_bound'].tolist() + city_preds['lower_bound'].tolist()[::-1],
+                fill='toself',
+                fillcolor='rgba(128, 128, 128, 0.2)',
+                line={'color': 'rgba(255,255,255,0)'},
+                showlegend=False,
+                name=f'{city_name} CI',
+                hoverinfo='skip'
+            ))
+        
+        fig.update_layout(
+            paper_bgcolor=COLORS['bg_card'],
+            plot_bgcolor=COLORS['bg_card'],
+            font={'color': COLORS['text_primary'], 'size': 11},
+            xaxis={
+                'showgrid': True,
+                'gridcolor': COLORS['border'],
+                'title': None,
+                'color': COLORS['text_secondary']
+            },
+            yaxis={
+                'showgrid': True,
+                'gridcolor': COLORS['border'],
+                'title': 'Temperature (°C)',
+                'color': COLORS['text_secondary']
+            },
+            legend={
+                'orientation': 'h',
+                'yanchor': 'bottom',
+                'y': 1.02,
+                'xanchor': 'right',
+                'x': 1,
+                'font': {'size': 10}
+            },
+            margin={'l': 50, 'r': 20, 't': 40, 'b': 40},
+            hovermode='x unified',
+            autosize=True
+        )
+        
+        return fig
+        
+    except Exception as e:
+        print(f"Error in ML predictions: {e}")
+        return go.Figure().update_layout(
+            paper_bgcolor=COLORS['bg_card'],
+            plot_bgcolor=COLORS['bg_card'],
+            font={'color': COLORS['text_secondary']},
+            annotations=[{
+                'text': f'Error loading predictions: {str(e)}',
+                'xref': 'paper',
+                'yref': 'paper',
+                'x': 0.5,
+                'y': 0.5,
+                'showarrow': False,
+                'font': {'size': 12, 'color': COLORS['accent_red']}
+            }]
+        )
+
+# ML Accuracy Info
+@app.callback(
+    Output('ml-accuracy-info', 'children'),
+    [Input('interval-update', 'n_intervals'),
+     Input('refresh-button', 'n_clicks'),
+     Input('city-filter', 'value')]
+)
+def update_ml_accuracy(n, clicks, city):
+    """Display ML model accuracy and information"""
+    import sqlite3
+    
+    try:
+        conn = sqlite3.connect(str(DB_PATH))
+        
+        # Check if predictions exist
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='ml_temperature_predictions'")
+        if not cursor.fetchone():
+            conn.close()
+            return html.Div([
+                html.Div([
+                    html.I(className='fa-solid fa-circle-info', style={'color': COLORS['accent_blue'], 'fontSize': '48px', 'marginBottom': '15px'}),
+                    html.H4('No Predictions Yet', style={'color': COLORS['text_primary'], 'marginBottom': '10px'}),
+                    html.P('Run the ML prediction model to generate temperature forecasts.', style={'color': COLORS['text_secondary'], 'fontSize': '14px', 'marginBottom': '15px'}),
+                    html.Code('python ml/temperature_predictor.py', style={'backgroundColor': COLORS['bg_secondary'], 'padding': '10px', 'borderRadius': '5px', 'display': 'block'})
+                ], style={'textAlign': 'center', 'padding': '20px'})
+            ])
+        
+        # Get prediction statistics
+        stats_query = """
+        SELECT 
+            city_name,
+            COUNT(*) as num_predictions,
+            AVG(predicted_temp) as avg_predicted,
+            MIN(predicted_temp) as min_predicted,
+            MAX(predicted_temp) as max_predicted,
+            MAX(created_at) as last_run
+        FROM ml_temperature_predictions
+        WHERE created_at = (SELECT MAX(created_at) FROM ml_temperature_predictions)
+        """
+        if city and city != 'all':
+            stats_query += f" AND city_name = '{city}'"
+        stats_query += " GROUP BY city_name"
+        
+        stats_df = pd.read_sql_query(stats_query, conn)
+        conn.close()
+        
+        if stats_df.empty:
+            return html.Div('No prediction data available', style={'color': COLORS['text_secondary'], 'textAlign': 'center', 'padding': '20px'})
+        
+        # Create info cards
+        cards = []
+        
+        # Summary card
+        total_predictions = stats_df['num_predictions'].sum()
+        num_cities = len(stats_df)
+        last_run = pd.to_datetime(stats_df['last_run'].iloc[0]).strftime('%Y-%m-%d %H:%M')
+        
+        cards.append(html.Div([
+            html.Div([
+                html.I(className='fa-solid fa-robot', style={'color': COLORS['gradient_end'], 'fontSize': '24px'}),
+                html.Div([
+                    html.Div(f'{total_predictions}', style={'fontSize': '28px', 'fontWeight': '700', 'color': COLORS['text_primary']}),
+                    html.Div('Total Predictions', style={'fontSize': '12px', 'color': COLORS['text_secondary']})
+                ], style={'marginLeft': '15px'})
+            ], style={'display': 'flex', 'alignItems': 'center', 'marginBottom': '15px'}),
+            
+            html.Div([
+                html.Div([
+                    html.Strong('Cities: ', style={'color': COLORS['text_secondary']}),
+                    html.Span(f'{num_cities}', style={'color': COLORS['text_primary']})
+                ], style={'marginBottom': '5px'}),
+                html.Div([
+                    html.Strong('Model: ', style={'color': COLORS['text_secondary']}),
+                    html.Span('Prophet v1', style={'color': COLORS['accent_green']})
+                ], style={'marginBottom': '5px'}),
+                html.Div([
+                    html.Strong('Last Run: ', style={'color': COLORS['text_secondary']}),
+                    html.Span(last_run, style={'color': COLORS['text_primary'], 'fontSize': '11px'})
+                ])
+            ], style={'fontSize': '13px'})
+        ], style={
+            'backgroundColor': COLORS['bg_secondary'],
+            'borderRadius': '8px',
+            'padding': '15px',
+            'marginBottom': '15px',
+            'border': f'1px solid {COLORS["border"]}'
+        }))
+        
+        # City-specific cards
+        for _, row in stats_df.iterrows():
+            cards.append(html.Div([
+                html.Div([
+                    html.I(className='fa-solid fa-location-dot', style={'color': COLORS['accent_blue'], 'fontSize': '18px'}),
+                    html.Strong(row['city_name'], style={'fontSize': '16px', 'color': COLORS['text_primary'], 'marginLeft': '10px'})
+                ], style={'display': 'flex', 'alignItems': 'center', 'marginBottom': '10px'}),
+                
+                html.Div([
+                    html.Div([
+                        html.Span('Avg: ', style={'color': COLORS['text_secondary'], 'fontSize': '12px'}),
+                        html.Span(f"{row['avg_predicted']:.1f}°C", style={'color': COLORS['text_primary'], 'fontWeight': '600'})
+                    ], style={'marginBottom': '3px'}),
+                    html.Div([
+                        html.Span('Range: ', style={'color': COLORS['text_secondary'], 'fontSize': '12px'}),
+                        html.Span(f"{row['min_predicted']:.1f}°C - {row['max_predicted']:.1f}°C", style={'color': COLORS['text_primary']})
+                    ])
+                ], style={'fontSize': '13px'})
+            ], style={
+                'backgroundColor': COLORS['bg_secondary'],
+                'borderRadius': '8px',
+                'padding': '12px',
+                'marginBottom': '10px',
+                'border': f'1px solid {COLORS["border"]}'
+            }))
+        
+        return html.Div(cards, style={'maxHeight': '320px', 'overflowY': 'auto'})
+        
+    except Exception as e:
+        print(f"Error in ML accuracy: {e}")
+        return html.Div(f'Error: {str(e)}', style={'color': COLORS['accent_red'], 'padding': '20px'})
 
 # Footer
 @app.callback(
