@@ -45,6 +45,8 @@ class ProcessManager:
                 cwd=str(self.project_root),
                 creationflags=self.creationflags,
                 text=True,
+                encoding='utf-8',
+                errors='replace',
                 bufsize=1
             )
 
@@ -832,7 +834,11 @@ class ProfessionalControlPanel:
                 info = self.manager.processes.get(key)
                 if info:
                     info['process'].wait()
-                    self.log(f"✓ {config['name']} completed")
+                    if key == 'ml_predictor':
+                        self.log(f"✓ {config['name']} completed - Predictions updated in database!")
+                        self.log(f"🔄 Refresh your dashboard to see new predictions")
+                    else:
+                        self.log(f"✓ {config['name']} completed")
             else:
                 self.log(f"✗ {message}")
         

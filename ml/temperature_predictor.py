@@ -6,6 +6,13 @@ Predicts next day's temperature for each city using Facebook Prophet
 Project: DEPI Final Project - IoT Data Pipeline with ML
 """
 
+import sys
+import io
+# Fix Windows console encoding for emoji support
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
 import sqlite3
 import pandas as pd
 import numpy as np
@@ -224,8 +231,12 @@ class TemperaturePredictor:
         )
         """)
         
-        # Save predictions
-        predictions_df['created_at'] = datetime.now()
+        # Clear old predictions to keep only latest run
+        cursor.execute("DELETE FROM ml_temperature_predictions")
+        
+        # Save predictions with consistent timestamp
+        run_timestamp = datetime.now()
+        predictions_df['created_at'] = run_timestamp
         predictions_df['model_version'] = 'prophet_v1'
         predictions_df.rename(columns={'ds': 'prediction_timestamp'}, inplace=True)
         
@@ -240,6 +251,7 @@ class TemperaturePredictor:
         conn.close()
         
         print(f"\n✅ Saved {len(predictions_df)} predictions to database")
+        print(f"🕒 Timestamp: {run_timestamp.strftime('%Y-%m-%d %H:%M:%S')}")
     
     def get_latest_predictions(self, city_name=None):
         """
