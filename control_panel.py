@@ -303,6 +303,21 @@ class ProfessionalControlPanel:
         )
         dashboard_btn.pack(side=tk.LEFT, padx=5)
         
+        dashboard_v2_btn = tk.Button(
+            actions_frame,
+            text="✨ DASHBOARD V2",
+            command=self.open_dashboard_v2,
+            bg="#7c3aed",
+            fg="white",
+            font=("Segoe UI", 12, "bold"),
+            cursor="hand2",
+            relief=tk.FLAT,
+            padx=25,
+            pady=12,
+            borderwidth=0
+        )
+        dashboard_v2_btn.pack(side=tk.LEFT, padx=5)
+        
         # === MAIN CONTENT ===
         content = tk.Frame(self.root, bg="#0a0e27")
         content.pack(fill=tk.BOTH, expand=True)
@@ -592,6 +607,14 @@ class ProfessionalControlPanel:
                 "desc": "Web UI (port 8050)",
                 "command": [self.manager.python_exe, "dashboard/advanced_dashboard.py"],
                 "auto_start": True
+            },
+            {
+                "name": "Dashboard V2 Pro",
+                "key": "dashboard_v2",
+                "icon": "✨",
+                "desc": "Professional UI (port 8051)",
+                "command": [self.manager.python_exe, "dashboard/dashboard_v2.py"],
+                "auto_start": False
             },
             {
                 "name": "Pipeline Monitor",
@@ -892,6 +915,12 @@ class ProfessionalControlPanel:
         import webbrowser
         webbrowser.open("http://127.0.0.1:8050")
         self.log("🌐 Opened dashboard in browser")
+    
+    def open_dashboard_v2(self):
+        """Open Dashboard V2 (Professional Edition) in browser"""
+        import webbrowser
+        webbrowser.open("http://127.0.0.1:8051")
+        self.log("✨ Opened Dashboard V2 (Professional) in browser")
     
     def on_component_selected(self, event):
         """Handle component selection for output view"""
