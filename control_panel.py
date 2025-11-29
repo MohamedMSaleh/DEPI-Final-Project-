@@ -329,7 +329,7 @@ class ProfessionalControlPanel:
         self.flow_canvas = tk.Canvas(
             flow_frame,
             bg="#1a1f3a",
-            height=120,
+            height=140,
             highlightthickness=0
         )
         self.flow_canvas.pack(fill=tk.X, padx=10, pady=10)
@@ -583,9 +583,9 @@ class ProfessionalControlPanel:
                 "name": "Batch ETL",
                 "key": "etl",
                 "icon": "⚙️",
-                "desc": "Batch processing & aggregation",
+                "desc": "Batch processing & aggregation (runs every 60s)",
                 "command": [self.manager.python_exe, "etl/batch_etl.py"],
-                "auto_start": False
+                "auto_start": True
             },
             {
                 "name": "Dashboard",
@@ -737,61 +737,139 @@ class ProfessionalControlPanel:
             ).pack(side=tk.LEFT, padx=2)
     
     def draw_pipeline_flow(self):
-        """Draw pipeline flow visualization"""
+        """Draw enhanced pipeline flow visualization with real-time status"""
         self.flow_canvas.delete("all")
-        width = self.flow_canvas.winfo_width() or 400
+        width = self.flow_canvas.winfo_width()
+        if width <= 1:
+            width = 800  # Default width
+        height = 140
         
-        stages = [
-            ("📡", "Sensor", "generator"),
-            ("→", "", None),
-            ("🔄", "Kafka", "consumer"),
-            ("→", "", None),
-            ("💾", "Database", None),
-            ("→", "", None),
+        # Define ETL Pipeline Flow (Batch Data Path - Primary)
+        # This follows strict ETL architecture:
+        # Sensor → Files → ETL (Extract/Transform/Load) → Warehouse → ML → Dashboard
+        
+        stage_configs = [
+            ("📡", "Sensor\nGen", "generator"),
+            ("📄", "Files\n(CSV)", None),
+            ("⚙️", "Batch\nETL", "etl"),
+            ("💾", "Data\nWarehouse", None),
+            ("🧠", "ML\nModel", "ml_predictor"),
             ("📊", "Dashboard", "dashboard")
         ]
         
-        x_spacing = width // (len(stages) + 1)
-        y_center = 60
+        # Note: Kafka streaming (generator→broker→consumer) runs in parallel
+        # for real-time ALERTS only, not data warehouse writes
         
-        for i, (icon, label, key) in enumerate(stages):
-            x = x_spacing * (i + 1)
+        # Calculate spacing dynamically
+        num_stages = len(stage_configs)
+        margin = 50
+        usable_width = width - (2 * margin)
+        spacing = usable_width / (num_stages - 1) if num_stages > 1 else 0
+        
+        # Create stages list with calculated positions
+        stages = []
+        for i, (icon, label, key) in enumerate(stage_configs):
+            x_pos = margin + (i * spacing)
+            stages.append((icon, label, key, x_pos))
+        
+        # Draw flow lines with animation indicators
+        for i in range(len(stages) - 1):
+            x1 = stages[i][3] + 30
+            x2 = stages[i + 1][3] - 30
+            y = 70
             
-            if key:
-                # Check status
-                status = self.manager.get_status(key) if key else "Active"
-                color = "#00ff88" if status == "Running" else "#6c7a89"
-                
-                # Draw node
+            # Check if both components are running
+            key1 = stages[i][2]
+            key2 = stages[i + 1][2]
+            is_flowing = False
+            
+            if key1:
+                status1 = self.manager.get_status(key1)
+                if status1 == "Running":
+                    if key2:
+                        status2 = self.manager.get_status(key2)
+                        is_flowing = status2 == "Running"
+                    else:
+                        is_flowing = True
+            
+            line_color = "#00ff88" if is_flowing else "#3d4466"
+            
+            # Draw connection line
+            self.flow_canvas.create_line(
+                x1, y, x2, y,
+                fill=line_color,
+                width=2,
+                arrow=tk.LAST,
+                arrowshape=(10, 12, 5)
+            )
+            
+            # Add flow indicator dot if active
+            if is_flowing:
+                dot_x = x1 + (x2 - x1) * 0.5
                 self.flow_canvas.create_oval(
-                    x - 25, y_center - 25,
-                    x + 25, y_center + 25,
-                    fill="#252b42",
-                    outline=color,
-                    width=3
+                    dot_x - 3, y - 3,
+                    dot_x + 3, y + 3,
+                    fill="#00ff88",
+                    outline=""
                 )
-                
-                self.flow_canvas.create_text(
-                    x, y_center - 10,
-                    text=icon,
-                    font=("Segoe UI", 16),
-                    fill="#ffffff"
-                )
-                
-                self.flow_canvas.create_text(
-                    x, y_center + 15,
-                    text=label,
-                    font=("Segoe UI", 8, "bold"),
-                    fill=color
-                )
+        
+        # Add streaming path annotation
+        self.flow_canvas.create_text(
+            width // 2, 10,
+            text="⚡ Streaming Path (Kafka): Alerts Only | 📊 Batch Path (ETL): Data Warehouse",
+            font=("Segoe UI", 7),
+            fill="#6c7a89"
+        )
+        
+        # Draw stage nodes
+        for icon, label, key, x in stages:
+            y = 70
+            
+            # Determine status and color
+            if key:
+                status = self.manager.get_status(key)
+                if status == "Running":
+                    color = "#00ff88"
+                    fill = "#1a3a2e"
+                elif status == "Stopped":
+                    color = "#6c7a89"
+                    fill = "#252b42"
+                else:
+                    color = "#ff6b6b"
+                    fill = "#3a1a1a"
             else:
-                # Draw arrow
-                self.flow_canvas.create_text(
-                    x, y_center,
-                    text=icon,
-                    font=("Segoe UI", 20),
-                    fill="#6c7a89"
-                )
+                # Files/Warehouse nodes - show as active if generator/ETL is running
+                gen_status = self.manager.get_status('generator')
+                etl_status = self.manager.get_status('etl')
+                is_active = (gen_status == "Running" or etl_status == "Running")
+                color = "#00d4ff" if is_active else "#6c7a89"
+                fill = "#1a2a3a" if is_active else "#252b42"
+            
+            # Draw node circle
+            self.flow_canvas.create_oval(
+                x - 30, y - 30,
+                x + 30, y + 30,
+                fill=fill,
+                outline=color,
+                width=3
+            )
+            
+            # Draw icon
+            self.flow_canvas.create_text(
+                x, y - 5,
+                text=icon,
+                font=("Segoe UI", 18),
+                fill="#ffffff"
+            )
+            
+            # Draw label below
+            self.flow_canvas.create_text(
+                x, y + 55,
+                text=label,
+                font=("Segoe UI", 8, "bold"),
+                fill=color,
+                justify=tk.CENTER
+            )
     
     def start_component(self, key):
         """Start a specific component"""
@@ -845,12 +923,13 @@ class ProfessionalControlPanel:
         threading.Thread(target=run_and_wait, daemon=True).start()
     
     def start_all(self):
-        """Start all auto-start components"""
+        """Start all auto-start components and run ML predictor"""
         self.log("⚡ Starting all primary components...")
         
         started = []
         errors = []
         
+        # Start auto-start components (includes ETL now as continuous service)
         for key, config in self.component_configs.items():
             if config.get('auto_start', False):
                 success, message = self.manager.start_process(key, config['command'])
@@ -862,6 +941,15 @@ class ProfessionalControlPanel:
                     self.log(f"✗ {message}")
                 time.sleep(0.5)
         
+        # Wait a moment for services to initialize
+        if not errors:
+            self.log("⏳ Waiting for services to initialize...")
+            time.sleep(2)
+            
+            # Run ML Predictor (one-time execution)
+            self.log("⚡ Running ML Temperature Predictor...")
+            self.run_once('ml_predictor')
+        
         if errors:
             messagebox.showwarning(
                 "Partial Start",
@@ -869,12 +957,16 @@ class ProfessionalControlPanel:
             )
         else:
             self.log(f"✓ All {len(started)} components running!")
+            self.log("✓ ETL running continuously (every 60s)")
+            self.log("✓ ML Predictor executed!")
             messagebox.showinfo(
                 "Success",
                 f"🚀 Pipeline is LIVE!\n\n"
                 f"✓ {len(started)} components started\n"
+                f"✓ ETL runs every 60 seconds\n"
+                f"✓ ML Predictor executed\n"
                 f"✓ Dashboard: http://127.0.0.1:8050\n"
-                f"✓ Streaming data flow active"
+                f"✓ Complete pipeline active"
             )
     
     def stop_all(self):

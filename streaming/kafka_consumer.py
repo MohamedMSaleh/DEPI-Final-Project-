@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
 """
 kafka_consumer.py
-Real-time Kafka Streaming Consumer for IoT Weather Data
+Real-time Kafka Streaming Consumer for IoT Weather Data - ALERT MONITORING ONLY
 
-Project: DEPI Final Project - Real-time IoT Data Pipeline
+Project: DEPI Final Project - Real-time IoT Data Pipeline (Milestone 3)
 Team: Data Rangers
 
-This script implements a Kafka-based streaming consumer that:
+ARCHITECTURE NOTE:
+This script implements the STREAMING PATH for real-time alerting.
+It does NOT write to the data warehouse - that is handled by Batch ETL.
+
+This follows strict ETL architecture requirements:
+- Streaming Path (This file): Kafka → Real-time monitoring → Alerts
+- Batch Path (etl/batch_etl.py): Files → ETL → Data Warehouse
+
+This script:
 - Consumes sensor data from Kafka topics in real-time
 - Detects threshold breaches and anomalies
 - Generates alerts for critical conditions
-- Logs alerts to database
+- Logs alerts to database (alerts table only)
 - Provides production-grade message queue architecture
 
 Alert Rules:
@@ -20,6 +28,9 @@ Alert Rules:
 - High Humidity: humidity > 90%
 - High Wind Speed: wind_speed > 50 km/h
 - Unusual Pressure: pressure < 980 or pressure > 1040 hPa
+
+Data Warehouse Population:
+For sensor data in warehouse, run: python etl/batch_etl.py
 """
 
 import json
@@ -119,7 +130,7 @@ class KafkaStreamingConsumer:
         logger.info(f"[OK] Kafka streaming consumer initialized")
         logger.info(f"   Topic: {self.topic}")
         logger.info(f"   Alert rules: {len(self.alert_rules)}")
-        logger.info(f"   Saving readings to database: ENABLED")
+        logger.info(f"   Mode: ALERTS ONLY (Data warehouse via ETL)")
     
     def process_message(self, message: Dict):
         """
@@ -160,28 +171,37 @@ class KafkaStreamingConsumer:
                         alerts_triggered.append(rule.name)
                         self.alert_count += 1
             
-            # Save reading to database
-            self.save_reading_to_database(message)
+            # NOTE: Streaming path does NOT write to data warehouse
+            # Data warehouse population is handled by Batch ETL (etl/batch_etl.py)
+            # This follows strict ETL architecture: Extract → Transform → Load
+            # Kafka Consumer role: Real-time monitoring and alerting ONLY
             
             # Log processing (only show alerts or every 50th message)
             if alerts_triggered:
                 logger.info(f"[STATS] Processed {self.processed_count} messages | "
-                           f"Saved: {self.readings_saved} | Alerts: {self.alert_count} | "
+                           f"Alerts: {self.alert_count} | "
                            f"Current: {', '.join(alerts_triggered)}")
             elif self.processed_count % 50 == 0:
                 logger.info(f"[STATS] Processed {self.processed_count} messages | "
-                           f"Saved: {self.readings_saved} | Alerts: {self.alert_count}")
+                           f"Alerts: {self.alert_count}")
         
         except Exception as e:
             logger.error(f"Error processing message: {e}")
     
     def save_reading_to_database(self, message: Dict):
         """
-        Save sensor reading to the data warehouse.
+        [DEPRECATED] This method is no longer used.
         
-        Args:
-            message: Full sensor message from Kafka
+        Data warehouse writes are now handled exclusively by Batch ETL.
+        Streaming consumer only monitors for alerts (strict ETL architecture).
+        
+        To populate the warehouse, run: python etl/batch_etl.py
         """
+        # Method kept for backward compatibility but functionality removed
+        return
+        
+        # Original code commented out - warehouse writes now via ETL only
+        """ 
         try:
             session = get_session(self.engine)
             
@@ -293,6 +313,7 @@ class KafkaStreamingConsumer:
             if session:
                 session.rollback()
                 session.close()
+        """
     
     def create_alert(self, sensor_id: str, alert_type: str, severity: str,
                      metric_name: str, metric_value: float, threshold: float,

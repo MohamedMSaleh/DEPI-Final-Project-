@@ -161,3 +161,105 @@
 2025-11-29 12:37:58,697 - INFO - Records skipped (duplicates/invalid): 13402
 2025-11-29 12:37:58,780 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
 2025-11-29 12:37:58,780 - INFO - Batch ETL pipeline complete
+2025-11-29 12:43:50,183 - INFO - Starting batch ETL job
+2025-11-29 12:43:50,184 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 12:43:50,185 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 12:45:03,622 - INFO - Records inserted: 450
+2025-11-29 12:45:03,625 - INFO - Records skipped (duplicates/invalid): 13692
+2025-11-29 12:45:03,688 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 12:45:03,689 - INFO - Batch ETL pipeline complete
+2025-11-29 12:49:43,123 - INFO - Starting batch ETL job
+2025-11-29 12:49:43,124 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 12:49:43,125 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 12:53:04,670 - INFO - Starting batch ETL job
+2025-11-29 12:53:04,670 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 12:53:04,671 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 12:53:53,433 - INFO - Records inserted: 300
+2025-11-29 12:53:53,434 - INFO - Records skipped (duplicates/invalid): 14142
+2025-11-29 12:53:53,478 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 12:53:53,478 - INFO - Batch ETL pipeline complete
+2025-11-29 13:11:49,239 - INFO - Starting batch ETL job
+2025-11-29 13:11:49,240 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 13:11:49,241 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 13:12:49,540 - INFO - Records inserted: 278
+2025-11-29 13:12:49,541 - INFO - Records skipped (duplicates/invalid): 14442
+2025-11-29 13:12:49,598 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 13:12:49,599 - INFO - Batch ETL pipeline complete
+2025-11-29 13:19:43,782 - INFO - ======================================================================
+2025-11-29 13:19:43,783 - INFO - BATCH ETL PIPELINE - CONTINUOUS MODE
+2025-11-29 13:19:43,783 - INFO - ======================================================================
+2025-11-29 13:19:43,783 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 13:19:43,784 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 13:19:43,784 - INFO - Run interval: 60 seconds
+2025-11-29 13:19:43,785 - INFO - Press Ctrl+C to stop
+2025-11-29 13:19:43,785 - INFO - ======================================================================
+2025-11-29 13:19:43,786 - INFO - 
+[CYCLE 1] Starting ETL at 13:19:43
+2025-11-29 13:20:34,043 - INFO - ======================================================================
+2025-11-29 13:20:34,043 - INFO - BATCH ETL PIPELINE - CONTINUOUS MODE
+2025-11-29 13:20:34,044 - INFO - ======================================================================
+2025-11-29 13:20:34,044 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 13:20:34,044 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 13:20:34,045 - INFO - Run interval: 60 seconds
+2025-11-29 13:20:34,045 - INFO - Press Ctrl+C to stop
+2025-11-29 13:20:34,046 - INFO - ======================================================================
+2025-11-29 13:20:34,046 - INFO - 
+[CYCLE 1] Starting ETL at 13:20:34
+2025-11-29 13:21:24,805 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 13:21:24,807 - INFO - [CYCLE 1] Complete in 50.8s
+2025-11-29 13:21:24,807 - INFO - [CYCLE 1] Inserted: 580 | Skipped: 14720
+2025-11-29 13:21:24,808 - INFO - [TOTAL] Inserted: 580 | Skipped: 14720
+2025-11-29 13:21:24,808 - INFO - [WAITING] Next cycle in 60 seconds...
+2025-11-29 13:22:24,809 - INFO - 
+[CYCLE 2] Starting ETL at 13:22:24
+2025-11-29 13:23:09,396 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 13:23:09,397 - INFO - [CYCLE 2] Complete in 44.6s
+2025-11-29 13:23:09,397 - INFO - [CYCLE 2] Inserted: 210 | Skipped: 15300
+2025-11-29 13:23:09,397 - INFO - [TOTAL] Inserted: 790 | Skipped: 30020
+2025-11-29 13:23:09,398 - INFO - [WAITING] Next cycle in 60 seconds...
+2025-11-29 13:24:09,398 - INFO - 
+[CYCLE 3] Starting ETL at 13:24:09
+2025-11-29 13:33:33,546 - INFO - ======================================================================
+2025-11-29 13:33:33,547 - INFO - BATCH ETL PIPELINE - CONTINUOUS MODE
+2025-11-29 13:33:33,548 - INFO - ======================================================================
+2025-11-29 13:33:33,548 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 13:33:33,549 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 13:33:33,549 - INFO - Run interval: 60 seconds
+2025-11-29 13:33:33,549 - INFO - Press Ctrl+C to stop
+2025-11-29 13:33:33,549 - INFO - ======================================================================
+2025-11-29 13:33:33,550 - INFO - 
+[CYCLE 1] Starting ETL at 13:33:33
+2025-11-29 13:34:46,641 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 13:34:46,642 - INFO - [CYCLE 1] Complete in 73.1s
+2025-11-29 13:34:46,643 - INFO - [CYCLE 1] Inserted: 319 | Skipped: 15510
+2025-11-29 13:34:46,643 - INFO - [TOTAL] Inserted: 319 | Skipped: 15510
+2025-11-29 13:34:46,643 - INFO - [WAITING] Next cycle in 60 seconds...
+2025-11-29 13:35:46,644 - INFO - 
+[CYCLE 2] Starting ETL at 13:35:46
+2025-11-29 13:36:29,029 - INFO - ======================================================================
+2025-11-29 13:36:29,030 - INFO - BATCH ETL PIPELINE - CONTINUOUS MODE
+2025-11-29 13:36:29,030 - INFO - ======================================================================
+2025-11-29 13:36:29,030 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 13:36:29,031 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 13:36:29,031 - INFO - Run interval: 60 seconds
+2025-11-29 13:36:29,031 - INFO - Press Ctrl+C to stop
+2025-11-29 13:36:29,031 - INFO - ======================================================================
+2025-11-29 13:36:29,031 - INFO - 
+[CYCLE 1] Starting ETL at 13:36:29
+2025-11-29 13:41:47,485 - INFO - ======================================================================
+2025-11-29 13:41:47,486 - INFO - BATCH ETL PIPELINE - CONTINUOUS MODE
+2025-11-29 13:41:47,486 - INFO - ======================================================================
+2025-11-29 13:41:47,486 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 13:41:47,487 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 13:41:47,487 - INFO - Run interval: 60 seconds
+2025-11-29 13:41:47,487 - INFO - Press Ctrl+C to stop
+2025-11-29 13:41:47,487 - INFO - ======================================================================
+2025-11-29 13:41:47,487 - INFO - 
+[CYCLE 1] Starting ETL at 13:41:47
+2025-11-29 13:42:57,014 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 13:42:57,015 - INFO - [CYCLE 1] Complete in 69.5s
+2025-11-29 13:42:57,015 - INFO - [CYCLE 1] Inserted: 430 | Skipped: 15829
+2025-11-29 13:42:57,016 - INFO - [TOTAL] Inserted: 430 | Skipped: 15829
+2025-11-29 13:42:57,016 - INFO - [WAITING] Next cycle in 60 seconds...
+2025-11-29 13:43:57,016 - INFO - 
+[CYCLE 2] Starting ETL at 13:43:57

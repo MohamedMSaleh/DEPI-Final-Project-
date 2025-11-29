@@ -24,31 +24,64 @@ This project implements a production-ready IoT data pipeline that simulates weat
 
 ## Architecture
 
+**✅ Corrected Architecture - Follows Strict ETL Requirements**
+
+The project implements **TWO PARALLEL DATA PATHS**:
+
+### **Path 1: Batch ETL Pipeline (Primary Data Path)**
 ```
-┌─────────────────┐
-│ Sensor Generator│
-│   (Phase 1)     │
-└────────┬────────┘
-         │
-         ▼
-    ┌────────────┐
-    │  JSONL/CSV │
-    │   Files    │
-    └─────┬──────┘
-          │
-          ├──────────────────────────┐
-          │                          │
-          ▼                          ▼
-   ┌─────────────┐         ┌─────────────────┐
-   │  Batch ETL  │         │    Streaming    │
-   │  (Phase 2)  │         │    Consumer     │
-   │             │         │    (Phase 3)    │
-   └──────┬──────┘         └────────┬────────┘
-          │                         │
-          ▼                         ▼
-   ┌────────────────────────────────────┐
-   │    Data Warehouse (SQLite)         │
-   │    - Fact: Weather Readings        │
+📡 Sensor Generator → 📄 CSV/JSONL Files → ⚙️ Batch ETL → 💾 Data Warehouse → 📊 Dashboard
+                                              ↓
+                                    (Extract, Transform, Load)
+                                    - Read raw files
+                                    - Clean & aggregate
+                                    - Flag anomalies
+                                    - Load to warehouse
+```
+
+### **Path 2: Streaming Pipeline (Real-time Alerts)**
+```
+📡 Sensor Generator → 🔄 Kafka Broker → 💬 Kafka Consumer → 🚨 Alert Database
+                                              ↓
+                                    (Monitor & Alert ONLY)
+                                    - Real-time monitoring
+                                    - Threshold detection
+                                    - Alert generation
+                                    - NO warehouse writes
+```
+
+### **Complete Flow Diagram**
+```
+                    📡 SENSOR GENERATOR
+                           |
+                    Writes to BOTH paths
+                    ┌──────┴──────┐
+                    ↓             ↓
+            📄 CSV FILES    🔄 KAFKA BROKER
+                    ↓             ↓
+            ⚙️ BATCH ETL   💬 KAFKA CONSUMER
+         (Extract/Transform     (Monitor &
+              /Load)            Alert Only)
+                    ↓             ↓
+            💾 DATA WAREHOUSE  🚨 ALERTS DB
+         (sensor_readings,    (alert_log
+          hourly_aggregates)   table only)
+                    ↓
+            ┌───────┴───────┐
+            ↓               ↓
+        🧠 ML PREDICTOR  📊 DASHBOARD
+      (ml_predictions)  (Visualizations)
+                    ↓
+            📊 DASHBOARD
+        (Shows predictions)
+```
+
+### **Key Architectural Principles**
+
+1. **Batch ETL is Primary**: All data warehouse population via ETL
+2. **Streaming for Alerts**: Kafka path monitors and alerts only
+3. **No Dual Writes**: Only ETL writes to fact tables
+4. **Clear Separation**: Batch vs. Streaming responsibilities
    │    - Dims: Time, Sensor, Location  │
    │    - Alerts Log                    │
    └──────────────┬─────────────────────┘

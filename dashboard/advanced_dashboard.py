@@ -106,9 +106,15 @@ app.index_string = '''
             color: #ffffff !important;
         }
         .Select-placeholder {
-            color: #b8bcc8 !important;
+            color: #ffffff !important;
         }
         .Select-value-label {
+            color: #ffffff !important;
+        }
+        .Select-input {
+            color: #ffffff !important;
+        }
+        .Select-input > input {
             color: #ffffff !important;
         }
         .Select-arrow-zone {
@@ -118,12 +124,31 @@ app.index_string = '''
             background-color: #252b48 !important;
             border: 1px solid #374151 !important;
         }
+        .Select-menu {
+            background-color: #252b48 !important;
+        }
         .Select-option {
             background-color: #252b48 !important;
             color: #ffffff !important;
+            padding: 8px 10px !important;
         }
         .Select-option:hover {
             background-color: #3b82f6 !important;
+            color: #ffffff !important;
+        }
+        .Select-option.is-focused {
+            background-color: #3b82f6 !important;
+            color: #ffffff !important;
+        }
+        .Select-option.is-selected {
+            background-color: #3b82f6 !important;
+            color: #ffffff !important;
+        }
+        .VirtualizedSelectOption {
+            color: #ffffff !important;
+        }
+        div[class*="option"] {
+            color: #ffffff !important;
         }
         </style>
     </head>
@@ -335,7 +360,7 @@ app.layout = html.Div(
         # Auto-refresh interval
         dcc.Interval(
             id='interval-update',
-            interval=60*1000,  # 60 seconds
+            interval=10*1000,  # 10 seconds - faster refresh
             n_intervals=0
         ),
         
@@ -621,6 +646,9 @@ def update_filters(n):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         # Get unique cities
         cities = session.query(DimLocation.city_name).distinct().all()
         city_options = [
@@ -648,6 +676,9 @@ def update_header_status(n):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         active_sensors = session.query(DimSensor).filter(DimSensor.is_active == True).count()
         open_alerts = session.query(AlertLog).filter(AlertLog.is_resolved == False).count()
         
@@ -679,6 +710,9 @@ def update_kpi_cards(n, clicks, city, time_range):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         # Build query
         query = session.query(FactWeatherReading).join(
             DimLocation, FactWeatherReading.location_id == DimLocation.location_id
@@ -776,6 +810,9 @@ def update_timeseries(n, clicks, city, time_range):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         # Build query
         query = session.query(
             DimTime.ts,
@@ -882,6 +919,9 @@ def update_current_readings(n, clicks, city):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         query = session.query(
             DimLocation.city_name,
             FactWeatherReading.temperature,
@@ -1083,6 +1123,9 @@ def update_gauges(n, clicks, city, time_range):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         query = session.query(
             FactWeatherReading.temperature,
             FactWeatherReading.humidity,
@@ -1178,6 +1221,9 @@ def update_city_comparison(n, clicks, time_range):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         query = session.query(
             DimLocation.city_name,
             func.avg(FactWeatherReading.temperature).label('avg_temp'),
@@ -1253,6 +1299,9 @@ def update_distribution(n, clicks, city, time_range):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         query = session.query(
             FactWeatherReading.temperature
         ).join(
@@ -1326,6 +1375,9 @@ def update_alerts(n, clicks):
     session = get_session(DB_ENGINE)
     
     try:
+        # Clear session cache to get fresh data
+        session.expire_all()
+        
         alerts = session.query(AlertLog).order_by(AlertLog.alert_ts.desc()).limit(15).all()
         
         if not alerts:
@@ -1476,7 +1528,8 @@ def update_ml_predictions(n, clicks, city):
     import sqlite3
     
     try:
-        conn = sqlite3.connect(str(DB_PATH))
+        # Always create fresh connection to avoid caching
+        conn = sqlite3.connect(str(DB_PATH), check_same_thread=False, isolation_level=None)
         
         # Check if predictions table exists
         cursor = conn.cursor()
@@ -1652,7 +1705,8 @@ def update_ml_accuracy(n, clicks, city):
     import sqlite3
     
     try:
-        conn = sqlite3.connect(str(DB_PATH))
+        # Always create fresh connection to avoid caching
+        conn = sqlite3.connect(str(DB_PATH), check_same_thread=False)
         
         # Check if predictions exist
         cursor = conn.cursor()

@@ -317,10 +317,8 @@ def refresh_hourly_aggregates(engine, destination: Path, logger: logging.Logger)
     logger.info("Saved aggregates to: %s", destination)
 
 
-def main() -> None:
-    args = parse_args()
-    logger = configure_logging(args.verbose)
-
+def run_etl_cycle(args, logger) -> Tuple[int, int]:
+    """Run a single ETL cycle and return (inserted, skipped) counts"""
     csv_path = Path(args.input_csv)
     jsonl_path = Path(args.input_jsonl)
 
@@ -328,11 +326,7 @@ def main() -> None:
         logger.warning(
             "No source files found. Expected either %s or %s.", csv_path, jsonl_path
         )
-        return
-
-    logger.info("Starting batch ETL job")
-    logger.info("Input CSV: %s", csv_path if csv_path.exists() else "<missing>")
-    logger.info("Input JSONL: %s", jsonl_path if jsonl_path.exists() else "<missing>")
+        return 0, 0
 
     db_url = get_database_url()
     engine = create_database(db_url)
@@ -364,11 +358,57 @@ def main() -> None:
     finally:
         session.close()
 
-    logger.info("Records inserted: %d", inserted)
-    logger.info("Records skipped (duplicates/invalid): %d", skipped)
-
     refresh_hourly_aggregates(engine, Path(args.output_aggregates), logger)
-    logger.info("Batch ETL pipeline complete")
+    return inserted, skipped
+
+
+def main() -> None:
+    import time
+    
+    args = parse_args()
+    logger = configure_logging(args.verbose)
+
+    logger.info("="*70)
+    logger.info("BATCH ETL PIPELINE - CONTINUOUS MODE")
+    logger.info("="*70)
+    logger.info("Input CSV: %s", args.input_csv)
+    logger.info("Input JSONL: %s", args.input_jsonl)
+    logger.info("Run interval: 60 seconds")
+    logger.info("Press Ctrl+C to stop")
+    logger.info("="*70)
+
+    cycle_count = 0
+    total_inserted = 0
+    total_skipped = 0
+
+    try:
+        while True:
+            cycle_count += 1
+            cycle_start = datetime.now()
+            
+            logger.info(f"\n[CYCLE {cycle_count}] Starting ETL at {cycle_start.strftime('%H:%M:%S')}")
+            
+            inserted, skipped = run_etl_cycle(args, logger)
+            
+            total_inserted += inserted
+            total_skipped += skipped
+            
+            cycle_end = datetime.now()
+            duration = (cycle_end - cycle_start).total_seconds()
+            
+            logger.info(f"[CYCLE {cycle_count}] Complete in {duration:.1f}s")
+            logger.info(f"[CYCLE {cycle_count}] Inserted: {inserted} | Skipped: {skipped}")
+            logger.info(f"[TOTAL] Inserted: {total_inserted} | Skipped: {total_skipped}")
+            
+            # Wait 60 seconds before next cycle
+            logger.info(f"[WAITING] Next cycle in 60 seconds...")
+            time.sleep(60)
+            
+    except KeyboardInterrupt:
+        logger.info("\n[STOPPED] ETL pipeline stopped by user")
+        logger.info(f"[SUMMARY] Total cycles: {cycle_count}")
+        logger.info(f"[SUMMARY] Total inserted: {total_inserted}")
+        logger.info(f"[SUMMARY] Total skipped: {total_skipped}")
 
 
 if __name__ == "__main__":
