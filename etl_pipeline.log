@@ -83,3 +83,8 @@
 2025-11-29 17:47:09,568 - INFO - [WAITING] Next cycle in 60 seconds...
 2025-11-29 17:48:09,568 - INFO - 
 [CYCLE 2] Starting ETL at 17:48:09
+2025-11-29 17:49:42,498 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 17:49:42,499 - INFO - [CYCLE 2] Complete in 92.9s
+2025-11-29 17:49:42,500 - INFO - [CYCLE 2] Inserted: 310 | Skipped: 17978
+2025-11-29 17:49:42,500 - INFO - [TOTAL] Inserted: 680 | Skipped: 35586
+2025-11-29 17:49:42,501 - INFO - [WAITING] Next cycle in 60 seconds...

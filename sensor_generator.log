@@ -25,3 +25,4 @@
 2025-11-29 17:45:28,884 [INFO] - Generating REALISTIC Egyptian weather data suitable for ML models...
 2025-11-29 17:46:18,889 [INFO] - Spike injected for ws_cairo_006: temp changed from 27.03°C to 15.33°C
 2025-11-29 17:47:18,895 [INFO] - Spike injected for ws_cairo_001: temp changed from 26.38°C to 35.77°C
+2025-11-29 17:48:53,912 [INFO] - Spike injected for ws_luxor_004: temp changed from 33.54°C to 46.92°C
