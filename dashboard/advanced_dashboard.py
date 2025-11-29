@@ -741,17 +741,14 @@ def update_kpi_cards(n, clicks, city, sensor, time_range):
         observed_low = min(temps) if temps else None
 
         expected_low, expected_high = get_expected_temperature_range(city or 'all')
-        expected_range = f"Low {expected_low:.1f} degC / High {expected_high:.1f} degC"
-
         observed_range = (
-            f"{observed_low:.1f} degC" if observed_low is not None else "--",
-            f"{observed_high:.1f} degC" if observed_high is not None else "--"
+            f"{observed_low:.1f}°C" if observed_low is not None else "--",
+            f"{observed_high:.1f}°C" if observed_high is not None else "--"
         )
 
         kpis = [
             {'icon': 'fa-database', 'label': 'Total Readings', 'value': f'{total:,}', 'color': COLORS['accent_blue']},
             {'icon': 'fa-bolt', 'label': 'Anomalies', 'value': f'{anomalies}', 'color': COLORS['accent_red']},
-            {'icon': 'fa-sun', 'label': "Today's Expected Range", 'value': expected_range, 'color': COLORS['accent_red']},
             {'icon': 'fa-temperature-half', 'label': 'Observed Range', 'value': f'{observed_range[0]} to {observed_range[1]}', 'color': COLORS['accent_green']},
             {'icon': 'fa-droplet', 'label': 'Avg Humidity', 'value': f'{avg_humidity:.0f}%', 'color': COLORS['accent_blue']},
             {'icon': 'fa-wind', 'label': 'Avg Wind Speed', 'value': f'{avg_wind:.1f} km/h', 'color': COLORS['accent_green']},
@@ -871,7 +868,7 @@ def update_timeseries(n, clicks, city, sensor, time_range):
             yaxis={
                 'showgrid': True,
                 'gridcolor': COLORS['border'],
-                'title': 'Temperature (degC)',
+                'title': 'Temperature (°C)',
                 'color': COLORS['text_secondary']
             },
             legend={
@@ -975,7 +972,7 @@ def update_current_readings(n, clicks, city):
                 
                 # Large temperature display
                 html.Div(
-                    f'{temp:.1f} degC',
+                    f'{temp:.1f}°C',
                     style={
                         'fontSize': '64px',
                         'fontWeight': '700',
@@ -1250,7 +1247,7 @@ def update_city_comparison(n, clicks, time_range):
             yaxis={
                 'showgrid': True,
                 'gridcolor': COLORS['border'],
-                'title': 'Avg Temperature (degC)',
+                'title': 'Avg Temperature (°C)',
                 'color': COLORS['text_secondary']
             },
             margin={'l': 50, 'r': 20, 't': 20, 'b': 40},
@@ -1318,7 +1315,7 @@ def update_distribution(n, clicks, city, time_range):
             font={'color': COLORS['text_primary']},
             xaxis={
                 'showgrid': False,
-                'title': 'Temperature (degC)',
+                'title': 'Temperature (°C)',
                 'color': COLORS['text_secondary']
             },
             yaxis={
@@ -1448,9 +1445,9 @@ def update_readings_table(n, clicks, city):
         if not results:
             return html.Div('No data', style={'color': COLORS['text_secondary'], 'textAlign': 'center', 'padding': '20px'})
         
-        df = pd.DataFrame(results, columns=['Time', 'City', 'Sensor', 'Temp (degC)', 'Humidity (%)', 'Wind (km/h)'])
+        df = pd.DataFrame(results, columns=['Time', 'City', 'Sensor', 'Temp (°C)', 'Humidity (%)', 'Wind (km/h)'])
         df['Time'] = pd.to_datetime(df['Time']).dt.strftime('%m/%d %H:%M')
-        df['Temp (degC)'] = df['Temp (degC)'].round(1)
+        df['Temp (°C)'] = df['Temp (°C)'].round(1)
         df['Humidity (%)'] = df['Humidity (%)'].round(0)
         df['Wind (km/h)'] = df['Wind (km/h)'].round(1)
         

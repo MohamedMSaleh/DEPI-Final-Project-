@@ -1018,3 +1018,8 @@
 2025-11-29 09:47:53,484 [INFO] - Starting generator: 10 sensors, 5.0s interval, duration: unlimiteds
 2025-11-29 09:47:53,485 [INFO] - Generating REALISTIC Egyptian weather data suitable for ML models...
 2025-11-29 09:48:33,488 [INFO] - Spike injected for ws_giza_003: temp changed from 23.94°C to 34.04°C
+2025-11-29 09:59:48,141 [INFO] - [OK] Connected to Kafka broker, topic: sensor_data
+2025-11-29 09:59:48,142 [INFO] - Using Kafka for streaming. Also writing to local directory: output
+2025-11-29 09:59:48,143 [INFO] - Starting generator: 10 sensors, 5.0s interval, duration: unlimiteds
+2025-11-29 09:59:48,143 [INFO] - Generating REALISTIC Egyptian weather data suitable for ML models...
+2025-11-29 10:01:03,152 [INFO] - Spike injected for ws_aswan_005: temp changed from 31.96°C to 21.17°C
