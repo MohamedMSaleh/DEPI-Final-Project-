@@ -1,507 +1,65 @@
-2025-11-28 09:24:49,037 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 09:24:49,037 - INFO -    Topic: sensor_data
-2025-11-28 09:24:49,037 - INFO -    Alert rules: 7
-2025-11-28 09:24:49,038 - INFO -    Saving readings to database: ENABLED
-2025-11-28 09:24:49,038 - INFO - ======================================================================
-2025-11-28 09:24:49,038 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 09:24:49,038 - INFO - ======================================================================
-2025-11-28 09:24:49,038 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 09:24:49,038 - INFO - [RULES] Alert rules active: 7
-2025-11-28 09:24:49,038 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 09:24:49,039 - INFO - ======================================================================
-2025-11-28 09:24:49,039 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 09:24:49,039 - INFO - 
-2025-11-28 09:26:37,701 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 09:26:37,701 - INFO -    Topic: sensor_data
-2025-11-28 09:26:37,701 - INFO -    Alert rules: 7
-2025-11-28 09:26:37,701 - INFO -    Saving readings to database: ENABLED
-2025-11-28 09:26:37,701 - INFO - ======================================================================
-2025-11-28 09:26:37,701 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 09:26:37,701 - INFO - ======================================================================
-2025-11-28 09:26:37,702 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 09:26:37,702 - INFO - [RULES] Alert rules active: 7
-2025-11-28 09:26:37,702 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 09:26:37,702 - INFO - ======================================================================
-2025-11-28 09:26:37,702 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 09:26:37,702 - INFO - 
-2025-11-28 09:26:47,558 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 09:26:47,559 - INFO -    Topic: sensor_data
-2025-11-28 09:26:47,559 - INFO -    Alert rules: 7
-2025-11-28 09:26:47,559 - INFO -    Saving readings to database: ENABLED
-2025-11-28 09:26:47,559 - INFO - ======================================================================
-2025-11-28 09:26:47,559 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 09:26:47,559 - INFO - ======================================================================
-2025-11-28 09:26:47,559 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 09:26:47,559 - INFO - [RULES] Alert rules active: 7
-2025-11-28 09:26:47,559 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 09:26:47,559 - INFO - ======================================================================
-2025-11-28 09:26:47,559 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 09:26:47,560 - INFO - 
-2025-11-28 09:42:01,488 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 09:42:01,489 - INFO -    Topic: sensor_data
-2025-11-28 09:42:01,489 - INFO -    Alert rules: 7
-2025-11-28 09:42:01,489 - INFO -    Saving readings to database: ENABLED
-2025-11-28 09:42:01,489 - INFO - ======================================================================
-2025-11-28 09:42:01,489 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 09:42:01,490 - INFO - ======================================================================
-2025-11-28 09:42:01,490 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 09:42:01,490 - INFO - [RULES] Alert rules active: 7
-2025-11-28 09:42:01,490 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 09:42:01,490 - INFO - ======================================================================
-2025-11-28 09:42:01,490 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 09:42:01,490 - INFO - 
-2025-11-28 09:42:46,296 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 09:42:46,297 - INFO -    Topic: sensor_data
-2025-11-28 09:42:46,297 - INFO -    Alert rules: 7
-2025-11-28 09:42:46,298 - INFO -    Saving readings to database: ENABLED
-2025-11-28 09:42:46,298 - INFO - ======================================================================
-2025-11-28 09:42:46,298 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 09:42:46,298 - INFO - ======================================================================
-2025-11-28 09:42:46,299 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 09:42:46,299 - INFO - [RULES] Alert rules active: 7
-2025-11-28 09:42:46,299 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 09:42:46,299 - INFO - ======================================================================
-2025-11-28 09:42:46,300 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 09:42:46,300 - INFO - 
-2025-11-28 09:59:11,466 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 09:59:11,467 - INFO -    Topic: sensor_data
-2025-11-28 09:59:11,467 - INFO -    Alert rules: 7
-2025-11-28 09:59:11,468 - INFO -    Saving readings to database: ENABLED
-2025-11-28 09:59:11,468 - INFO - ======================================================================
-2025-11-28 09:59:11,468 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 09:59:11,469 - INFO - ======================================================================
-2025-11-28 09:59:11,469 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 09:59:11,469 - INFO - [RULES] Alert rules active: 7
-2025-11-28 09:59:11,470 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 09:59:11,470 - INFO - ======================================================================
-2025-11-28 09:59:11,470 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 09:59:11,471 - INFO - 
-2025-11-28 10:14:05,144 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 10:14:05,144 - INFO -    Topic: sensor_data
-2025-11-28 10:14:05,145 - INFO -    Alert rules: 7
-2025-11-28 10:14:05,145 - INFO -    Saving readings to database: ENABLED
-2025-11-28 10:14:05,145 - INFO - ======================================================================
-2025-11-28 10:14:05,146 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 10:14:05,147 - INFO - ======================================================================
-2025-11-28 10:14:05,147 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 10:14:05,147 - INFO - [RULES] Alert rules active: 7
-2025-11-28 10:14:05,148 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 10:14:05,148 - INFO - ======================================================================
-2025-11-28 10:14:05,148 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 10:14:05,149 - INFO - 
-2025-11-28 10:37:45,420 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 10:37:45,421 - INFO -    Topic: sensor_data
-2025-11-28 10:37:45,422 - INFO -    Alert rules: 7
-2025-11-28 10:37:45,422 - INFO -    Saving readings to database: ENABLED
-2025-11-28 10:37:45,423 - INFO - ======================================================================
-2025-11-28 10:37:45,423 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 10:37:45,424 - INFO - ======================================================================
-2025-11-28 10:37:45,424 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 10:37:45,425 - INFO - [RULES] Alert rules active: 7
-2025-11-28 10:37:45,425 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 10:37:45,425 - INFO - ======================================================================
-2025-11-28 10:37:45,426 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 10:37:45,426 - INFO - 
-2025-11-28 10:42:43,844 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-28 10:42:43,845 - INFO -    Topic: sensor_data
-2025-11-28 10:42:43,845 - INFO -    Alert rules: 7
-2025-11-28 10:42:43,845 - INFO -    Saving readings to database: ENABLED
-2025-11-28 10:42:43,845 - INFO - ======================================================================
-2025-11-28 10:42:43,845 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-28 10:42:43,845 - INFO - ======================================================================
-2025-11-28 10:42:43,846 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-28 10:42:43,846 - INFO - [RULES] Alert rules active: 7
-2025-11-28 10:42:43,846 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-28 10:42:43,846 - INFO - ======================================================================
-2025-11-28 10:42:43,846 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-28 10:42:43,846 - INFO - 
-2025-11-29 08:24:01,860 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 08:24:01,862 - INFO -    Topic: sensor_data
-2025-11-29 08:24:01,862 - INFO -    Alert rules: 7
-2025-11-29 08:24:01,862 - INFO -    Saving readings to database: ENABLED
-2025-11-29 08:24:01,863 - INFO - ======================================================================
-2025-11-29 08:24:01,863 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 08:24:01,863 - INFO - ======================================================================
-2025-11-29 08:24:01,864 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 08:24:01,864 - INFO - [RULES] Alert rules active: 7
-2025-11-29 08:24:01,864 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 08:24:01,865 - INFO - ======================================================================
-2025-11-29 08:24:01,865 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 08:24:01,865 - INFO - 
-2025-11-29 08:44:21,651 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 08:44:21,652 - INFO -    Topic: sensor_data
-2025-11-29 08:44:21,653 - INFO -    Alert rules: 7
-2025-11-29 08:44:21,653 - INFO -    Saving readings to database: ENABLED
-2025-11-29 08:44:21,653 - INFO - ======================================================================
-2025-11-29 08:44:21,654 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 08:44:21,654 - INFO - ======================================================================
-2025-11-29 08:44:21,654 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 08:44:21,655 - INFO - [RULES] Alert rules active: 7
-2025-11-29 08:44:21,655 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 08:44:21,655 - INFO - ======================================================================
-2025-11-29 08:44:21,655 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 08:44:21,656 - INFO - 
-2025-11-29 08:50:21,504 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 08:50:21,505 - INFO -    Topic: sensor_data
-2025-11-29 08:50:21,506 - INFO -    Alert rules: 7
-2025-11-29 08:50:21,506 - INFO -    Saving readings to database: ENABLED
-2025-11-29 08:50:21,506 - INFO - ======================================================================
-2025-11-29 08:50:21,507 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 08:50:21,507 - INFO - ======================================================================
-2025-11-29 08:50:21,507 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 08:50:21,508 - INFO - [RULES] Alert rules active: 7
-2025-11-29 08:50:21,508 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 08:50:21,508 - INFO - ======================================================================
-2025-11-29 08:50:21,508 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 08:50:21,509 - INFO - 
-2025-11-29 08:52:42,523 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 08:52:42,524 - INFO -    Topic: sensor_data
-2025-11-29 08:52:42,524 - INFO -    Alert rules: 7
-2025-11-29 08:52:42,524 - INFO -    Saving readings to database: ENABLED
-2025-11-29 08:52:42,525 - INFO - ======================================================================
-2025-11-29 08:52:42,525 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 08:52:42,525 - INFO - ======================================================================
-2025-11-29 08:52:42,526 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 08:52:42,526 - INFO - [RULES] Alert rules active: 7
-2025-11-29 08:52:42,526 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 08:52:42,526 - INFO - ======================================================================
-2025-11-29 08:52:42,527 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 08:52:42,527 - INFO - 
-2025-11-29 08:54:23,356 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 08:54:23,357 - INFO -    Topic: sensor_data
-2025-11-29 08:54:23,358 - INFO -    Alert rules: 7
-2025-11-29 08:54:23,358 - INFO -    Saving readings to database: ENABLED
-2025-11-29 08:54:23,359 - INFO - ======================================================================
-2025-11-29 08:54:23,359 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 08:54:23,359 - INFO - ======================================================================
-2025-11-29 08:54:23,359 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 08:54:23,360 - INFO - [RULES] Alert rules active: 7
-2025-11-29 08:54:23,360 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 08:54:23,360 - INFO - ======================================================================
-2025-11-29 08:54:23,360 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 08:54:23,361 - INFO - 
-2025-11-29 08:54:46,389 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 08:54:46,390 - INFO -    Topic: sensor_data
-2025-11-29 08:54:46,390 - INFO -    Alert rules: 7
-2025-11-29 08:54:46,390 - INFO -    Saving readings to database: ENABLED
-2025-11-29 08:54:46,391 - INFO - ======================================================================
-2025-11-29 08:54:46,391 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 08:54:46,391 - INFO - ======================================================================
-2025-11-29 08:54:46,391 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 08:54:46,392 - INFO - [RULES] Alert rules active: 7
-2025-11-29 08:54:46,392 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 08:54:46,392 - INFO - ======================================================================
-2025-11-29 08:54:46,392 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 08:54:46,393 - INFO - 
-2025-11-29 09:02:19,753 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 09:02:19,753 - INFO -    Topic: sensor_data
-2025-11-29 09:02:19,754 - INFO -    Alert rules: 7
-2025-11-29 09:02:19,754 - INFO -    Saving readings to database: ENABLED
-2025-11-29 09:02:19,755 - INFO - ======================================================================
-2025-11-29 09:02:19,755 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 09:02:19,756 - INFO - ======================================================================
-2025-11-29 09:02:19,756 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 09:02:19,756 - INFO - [RULES] Alert rules active: 7
-2025-11-29 09:02:19,757 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 09:02:19,757 - INFO - ======================================================================
-2025-11-29 09:02:19,757 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 09:02:19,758 - INFO - 
-2025-11-29 09:41:29,668 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 09:41:29,669 - INFO -    Topic: sensor_data
-2025-11-29 09:41:29,670 - INFO -    Alert rules: 7
-2025-11-29 09:41:29,670 - INFO -    Saving readings to database: ENABLED
-2025-11-29 09:41:29,670 - INFO - ======================================================================
-2025-11-29 09:41:29,671 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 09:41:29,671 - INFO - ======================================================================
-2025-11-29 09:41:29,671 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 09:41:29,672 - INFO - [RULES] Alert rules active: 7
-2025-11-29 09:41:29,672 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 09:41:29,672 - INFO - ======================================================================
-2025-11-29 09:41:29,672 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 09:41:29,673 - INFO - 
-2025-11-29 09:47:55,238 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 09:47:55,239 - INFO -    Topic: sensor_data
-2025-11-29 09:47:55,239 - INFO -    Alert rules: 7
-2025-11-29 09:47:55,240 - INFO -    Saving readings to database: ENABLED
-2025-11-29 09:47:55,240 - INFO - ======================================================================
-2025-11-29 09:47:55,240 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 09:47:55,241 - INFO - ======================================================================
-2025-11-29 09:47:55,241 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 09:47:55,242 - INFO - [RULES] Alert rules active: 7
-2025-11-29 09:47:55,242 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 09:47:55,242 - INFO - ======================================================================
-2025-11-29 09:47:55,242 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 09:47:55,243 - INFO - 
-2025-11-29 09:59:48,811 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 09:59:48,811 - INFO -    Topic: sensor_data
-2025-11-29 09:59:48,812 - INFO -    Alert rules: 7
-2025-11-29 09:59:48,812 - INFO -    Saving readings to database: ENABLED
-2025-11-29 09:59:48,812 - INFO - ======================================================================
-2025-11-29 09:59:48,812 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 09:59:48,813 - INFO - ======================================================================
-2025-11-29 09:59:48,813 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 09:59:48,813 - INFO - [RULES] Alert rules active: 7
-2025-11-29 09:59:48,813 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 09:59:48,814 - INFO - ======================================================================
-2025-11-29 09:59:48,814 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 09:59:48,814 - INFO - 
-2025-11-29 10:06:44,912 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 10:06:44,914 - INFO -    Topic: sensor_data
-2025-11-29 10:06:44,915 - INFO -    Alert rules: 7
-2025-11-29 10:06:44,915 - INFO -    Saving readings to database: ENABLED
-2025-11-29 10:06:44,916 - INFO - ======================================================================
-2025-11-29 10:06:44,916 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 10:06:44,916 - INFO - ======================================================================
-2025-11-29 10:06:44,917 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 10:06:44,917 - INFO - [RULES] Alert rules active: 7
-2025-11-29 10:06:44,917 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 10:06:44,918 - INFO - ======================================================================
-2025-11-29 10:06:44,918 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 10:06:44,918 - INFO - 
-2025-11-29 10:18:58,858 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 10:18:58,860 - INFO -    Topic: sensor_data
-2025-11-29 10:18:58,860 - INFO -    Alert rules: 7
-2025-11-29 10:18:58,861 - INFO -    Saving readings to database: ENABLED
-2025-11-29 10:18:58,861 - INFO - ======================================================================
-2025-11-29 10:18:58,861 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 10:18:58,862 - INFO - ======================================================================
-2025-11-29 10:18:58,862 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 10:18:58,863 - INFO - [RULES] Alert rules active: 7
-2025-11-29 10:18:58,863 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 10:18:58,864 - INFO - ======================================================================
-2025-11-29 10:18:58,864 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 10:18:58,864 - INFO - 
-2025-11-29 11:45:47,636 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 11:45:47,637 - INFO -    Topic: sensor_data
-2025-11-29 11:45:47,637 - INFO -    Alert rules: 7
-2025-11-29 11:45:47,638 - INFO -    Saving readings to database: ENABLED
-2025-11-29 11:45:47,638 - INFO - ======================================================================
-2025-11-29 11:45:47,639 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 11:45:47,639 - INFO - ======================================================================
-2025-11-29 11:45:47,639 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 11:45:47,639 - INFO - [RULES] Alert rules active: 7
-2025-11-29 11:45:47,640 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 11:45:47,640 - INFO - ======================================================================
-2025-11-29 11:45:47,640 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 11:45:47,641 - INFO - 
-2025-11-29 11:48:53,474 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 11:48:53,475 - INFO -    Topic: sensor_data
-2025-11-29 11:48:53,476 - INFO -    Alert rules: 7
-2025-11-29 11:48:53,476 - INFO -    Saving readings to database: ENABLED
-2025-11-29 11:48:53,477 - INFO - ======================================================================
-2025-11-29 11:48:53,477 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 11:48:53,477 - INFO - ======================================================================
-2025-11-29 11:48:53,478 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 11:48:53,478 - INFO - [RULES] Alert rules active: 7
-2025-11-29 11:48:53,478 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 11:48:53,479 - INFO - ======================================================================
-2025-11-29 11:48:53,479 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 11:48:53,480 - INFO - 
-2025-11-29 11:54:39,618 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 11:54:39,620 - INFO -    Topic: sensor_data
-2025-11-29 11:54:39,620 - INFO -    Alert rules: 7
-2025-11-29 11:54:39,621 - INFO -    Saving readings to database: ENABLED
-2025-11-29 11:54:39,621 - INFO - ======================================================================
-2025-11-29 11:54:39,621 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 11:54:39,622 - INFO - ======================================================================
-2025-11-29 11:54:39,622 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 11:54:39,622 - INFO - [RULES] Alert rules active: 7
-2025-11-29 11:54:39,622 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 11:54:39,623 - INFO - ======================================================================
-2025-11-29 11:54:39,623 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 11:54:39,623 - INFO - 
-2025-11-29 11:59:52,033 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 11:59:52,034 - INFO -    Topic: sensor_data
-2025-11-29 11:59:52,035 - INFO -    Alert rules: 7
-2025-11-29 11:59:52,035 - INFO -    Saving readings to database: ENABLED
-2025-11-29 11:59:52,035 - INFO - ======================================================================
-2025-11-29 11:59:52,036 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 11:59:52,036 - INFO - ======================================================================
-2025-11-29 11:59:52,036 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 11:59:52,037 - INFO - [RULES] Alert rules active: 7
-2025-11-29 11:59:52,037 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 11:59:52,037 - INFO - ======================================================================
-2025-11-29 11:59:52,038 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 11:59:52,038 - INFO - 
-2025-11-29 12:00:22,338 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:00:22,338 - INFO -    Topic: sensor_data
-2025-11-29 12:00:22,339 - INFO -    Alert rules: 7
-2025-11-29 12:00:22,339 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:00:22,339 - INFO - ======================================================================
-2025-11-29 12:00:22,340 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:00:22,340 - INFO - ======================================================================
-2025-11-29 12:00:22,340 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:00:22,341 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:00:22,341 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:00:22,341 - INFO - ======================================================================
-2025-11-29 12:00:22,341 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:00:22,342 - INFO - 
-2025-11-29 12:08:03,320 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:08:03,321 - INFO -    Topic: sensor_data
-2025-11-29 12:08:03,322 - INFO -    Alert rules: 7
-2025-11-29 12:08:03,322 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:08:03,323 - INFO - ======================================================================
-2025-11-29 12:08:03,323 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:08:03,324 - INFO - ======================================================================
-2025-11-29 12:08:03,324 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:08:03,324 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:08:03,325 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:08:03,325 - INFO - ======================================================================
-2025-11-29 12:08:03,325 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:08:03,326 - INFO - 
-2025-11-29 12:13:19,691 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:13:19,693 - INFO -    Topic: sensor_data
-2025-11-29 12:13:19,694 - INFO -    Alert rules: 7
-2025-11-29 12:13:19,694 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:13:19,694 - INFO - ======================================================================
-2025-11-29 12:13:19,695 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:13:19,695 - INFO - ======================================================================
-2025-11-29 12:13:19,696 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:13:19,696 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:13:19,696 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:13:19,696 - INFO - ======================================================================
-2025-11-29 12:13:19,696 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:13:19,696 - INFO - 
-2025-11-29 12:24:23,124 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:24:23,124 - INFO -    Topic: sensor_data
-2025-11-29 12:24:23,125 - INFO -    Alert rules: 7
-2025-11-29 12:24:23,125 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:24:23,125 - INFO - ======================================================================
-2025-11-29 12:24:23,126 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:24:23,126 - INFO - ======================================================================
-2025-11-29 12:24:23,126 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:24:23,126 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:24:23,127 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:24:23,127 - INFO - ======================================================================
-2025-11-29 12:24:23,127 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:24:23,128 - INFO - 
-2025-11-29 12:30:11,067 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:30:11,068 - INFO -    Topic: sensor_data
-2025-11-29 12:30:11,069 - INFO -    Alert rules: 7
-2025-11-29 12:30:11,069 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:30:11,070 - INFO - ======================================================================
-2025-11-29 12:30:11,070 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:30:11,070 - INFO - ======================================================================
-2025-11-29 12:30:11,071 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:30:11,071 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:30:11,072 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:30:11,072 - INFO - ======================================================================
-2025-11-29 12:30:11,072 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:30:11,073 - INFO - 
-2025-11-29 12:36:45,027 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:36:45,028 - INFO -    Topic: sensor_data
-2025-11-29 12:36:45,029 - INFO -    Alert rules: 7
-2025-11-29 12:36:45,029 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:36:45,029 - INFO - ======================================================================
-2025-11-29 12:36:45,030 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:36:45,030 - INFO - ======================================================================
-2025-11-29 12:36:45,030 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:36:45,030 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:36:45,031 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:36:45,031 - INFO - ======================================================================
-2025-11-29 12:36:45,031 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:36:45,032 - INFO - 
-2025-11-29 12:43:41,904 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:43:41,905 - INFO -    Topic: sensor_data
-2025-11-29 12:43:41,905 - INFO -    Alert rules: 7
-2025-11-29 12:43:41,906 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:43:41,906 - INFO - ======================================================================
-2025-11-29 12:43:41,906 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:43:41,907 - INFO - ======================================================================
-2025-11-29 12:43:41,907 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:43:41,907 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:43:41,907 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:43:41,907 - INFO - ======================================================================
-2025-11-29 12:43:41,907 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:43:41,907 - INFO - 
-2025-11-29 12:49:38,606 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:49:38,607 - INFO -    Topic: sensor_data
-2025-11-29 12:49:38,607 - INFO -    Alert rules: 7
-2025-11-29 12:49:38,608 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:49:38,608 - INFO - ======================================================================
-2025-11-29 12:49:38,608 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:49:38,609 - INFO - ======================================================================
-2025-11-29 12:49:38,609 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:49:38,609 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:49:38,610 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:49:38,610 - INFO - ======================================================================
-2025-11-29 12:49:38,611 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:49:38,611 - INFO - 
-2025-11-29 12:53:00,623 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 12:53:00,624 - INFO -    Topic: sensor_data
-2025-11-29 12:53:00,624 - INFO -    Alert rules: 7
-2025-11-29 12:53:00,625 - INFO -    Saving readings to database: ENABLED
-2025-11-29 12:53:00,625 - INFO - ======================================================================
-2025-11-29 12:53:00,625 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 12:53:00,626 - INFO - ======================================================================
-2025-11-29 12:53:00,626 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 12:53:00,626 - INFO - [RULES] Alert rules active: 7
-2025-11-29 12:53:00,627 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 12:53:00,627 - INFO - ======================================================================
-2025-11-29 12:53:00,627 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 12:53:00,628 - INFO - 
-2025-11-29 13:11:45,255 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 13:11:45,255 - INFO -    Topic: sensor_data
-2025-11-29 13:11:45,256 - INFO -    Alert rules: 7
-2025-11-29 13:11:45,256 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
-2025-11-29 13:11:45,257 - INFO - ======================================================================
-2025-11-29 13:11:45,257 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 13:11:45,257 - INFO - ======================================================================
-2025-11-29 13:11:45,257 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 13:11:45,258 - INFO - [RULES] Alert rules active: 7
-2025-11-29 13:11:45,258 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 13:11:45,258 - INFO - ======================================================================
-2025-11-29 13:11:45,259 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 13:11:45,259 - INFO - 
-2025-11-29 13:20:32,924 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 13:20:32,925 - INFO -    Topic: sensor_data
-2025-11-29 13:20:32,926 - INFO -    Alert rules: 7
-2025-11-29 13:20:32,926 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
-2025-11-29 13:20:32,926 - INFO - ======================================================================
-2025-11-29 13:20:32,927 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 13:20:32,927 - INFO - ======================================================================
-2025-11-29 13:20:32,927 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 13:20:32,927 - INFO - [RULES] Alert rules active: 7
-2025-11-29 13:20:32,927 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 13:20:32,927 - INFO - ======================================================================
-2025-11-29 13:20:32,927 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 13:20:32,927 - INFO - 
-2025-11-29 13:33:32,176 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 13:33:32,177 - INFO -    Topic: sensor_data
-2025-11-29 13:33:32,177 - INFO -    Alert rules: 7
-2025-11-29 13:33:32,177 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
-2025-11-29 13:33:32,177 - INFO - ======================================================================
-2025-11-29 13:33:32,177 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 13:33:32,177 - INFO - ======================================================================
-2025-11-29 13:33:32,178 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 13:33:32,178 - INFO - [RULES] Alert rules active: 7
-2025-11-29 13:33:32,178 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 13:33:32,178 - INFO - ======================================================================
-2025-11-29 13:33:32,178 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 13:33:32,178 - INFO - 
-2025-11-29 13:36:27,857 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 13:36:27,857 - INFO -    Topic: sensor_data
-2025-11-29 13:36:27,858 - INFO -    Alert rules: 7
-2025-11-29 13:36:27,858 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
-2025-11-29 13:36:27,858 - INFO - ======================================================================
-2025-11-29 13:36:27,858 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 13:36:27,858 - INFO - ======================================================================
-2025-11-29 13:36:27,858 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 13:36:27,858 - INFO - [RULES] Alert rules active: 7
-2025-11-29 13:36:27,858 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 13:36:27,859 - INFO - ======================================================================
-2025-11-29 13:36:27,859 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 13:36:27,859 - INFO - 
-2025-11-29 13:41:46,196 - INFO - [OK] Kafka streaming consumer initialized
-2025-11-29 13:41:46,197 - INFO -    Topic: sensor_data
-2025-11-29 13:41:46,197 - INFO -    Alert rules: 7
-2025-11-29 13:41:46,197 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
-2025-11-29 13:41:46,197 - INFO - ======================================================================
-2025-11-29 13:41:46,197 - INFO - [START] Kafka Real-time Streaming Pipeline
-2025-11-29 13:41:46,198 - INFO - ======================================================================
-2025-11-29 13:41:46,198 - INFO - [TOPIC] Consuming from: sensor_data
-2025-11-29 13:41:46,198 - INFO - [RULES] Alert rules active: 7
-2025-11-29 13:41:46,198 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
-2025-11-29 13:41:46,198 - INFO - ======================================================================
-2025-11-29 13:41:46,198 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
-2025-11-29 13:41:46,198 - INFO - 
+2025-11-29 14:45:03,423 - INFO - [OK] Kafka streaming consumer initialized
+2025-11-29 14:45:03,424 - INFO -    Topic: sensor_data
+2025-11-29 14:45:03,424 - INFO -    Alert rules: 7
+2025-11-29 14:45:03,424 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
+2025-11-29 14:45:03,424 - INFO - ======================================================================
+2025-11-29 14:45:03,424 - INFO - [START] Kafka Real-time Streaming Pipeline
+2025-11-29 14:45:03,425 - INFO - ======================================================================
+2025-11-29 14:45:03,425 - INFO - [TOPIC] Consuming from: sensor_data
+2025-11-29 14:45:03,425 - INFO - [RULES] Alert rules active: 7
+2025-11-29 14:45:03,425 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
+2025-11-29 14:45:03,425 - INFO - ======================================================================
+2025-11-29 14:45:03,426 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
+2025-11-29 14:45:03,426 - INFO - 
+2025-11-29 14:48:26,773 - INFO - [OK] Kafka streaming consumer initialized
+2025-11-29 14:48:26,774 - INFO -    Topic: sensor_data
+2025-11-29 14:48:26,774 - INFO -    Alert rules: 7
+2025-11-29 14:48:26,774 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
+2025-11-29 14:48:26,774 - INFO - ======================================================================
+2025-11-29 14:48:26,775 - INFO - [START] Kafka Real-time Streaming Pipeline
+2025-11-29 14:48:26,775 - INFO - ======================================================================
+2025-11-29 14:48:26,775 - INFO - [TOPIC] Consuming from: sensor_data
+2025-11-29 14:48:26,775 - INFO - [RULES] Alert rules active: 7
+2025-11-29 14:48:26,775 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
+2025-11-29 14:48:26,775 - INFO - ======================================================================
+2025-11-29 14:48:26,775 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
+2025-11-29 14:48:26,776 - INFO - 
+2025-11-29 17:12:19,194 - INFO - [OK] Kafka streaming consumer initialized
+2025-11-29 17:12:19,196 - INFO -    Topic: sensor_data
+2025-11-29 17:12:19,196 - INFO -    Alert rules: 7
+2025-11-29 17:12:19,196 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
+2025-11-29 17:12:19,196 - INFO - ======================================================================
+2025-11-29 17:12:19,196 - INFO - [START] Kafka Real-time Streaming Pipeline
+2025-11-29 17:12:19,196 - INFO - ======================================================================
+2025-11-29 17:12:19,196 - INFO - [TOPIC] Consuming from: sensor_data
+2025-11-29 17:12:19,197 - INFO - [RULES] Alert rules active: 7
+2025-11-29 17:12:19,197 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
+2025-11-29 17:12:19,197 - INFO - ======================================================================
+2025-11-29 17:12:19,197 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
+2025-11-29 17:12:19,197 - INFO - 
+2025-11-29 17:17:51,739 - INFO - [OK] Kafka streaming consumer initialized
+2025-11-29 17:17:51,739 - INFO -    Topic: sensor_data
+2025-11-29 17:17:51,739 - INFO -    Alert rules: 7
+2025-11-29 17:17:51,740 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
+2025-11-29 17:17:51,740 - INFO - ======================================================================
+2025-11-29 17:17:51,740 - INFO - [START] Kafka Real-time Streaming Pipeline
+2025-11-29 17:17:51,740 - INFO - ======================================================================
+2025-11-29 17:17:51,740 - INFO - [TOPIC] Consuming from: sensor_data
+2025-11-29 17:17:51,740 - INFO - [RULES] Alert rules active: 7
+2025-11-29 17:17:51,740 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
+2025-11-29 17:17:51,740 - INFO - ======================================================================
+2025-11-29 17:17:51,740 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
+2025-11-29 17:17:51,740 - INFO - 
+2025-11-29 17:45:29,846 - INFO - [OK] Kafka streaming consumer initialized
+2025-11-29 17:45:29,847 - INFO -    Topic: sensor_data
+2025-11-29 17:45:29,847 - INFO -    Alert rules: 7
+2025-11-29 17:45:29,847 - INFO -    Mode: ALERTS ONLY (Data warehouse via ETL)
+2025-11-29 17:45:29,848 - INFO - ======================================================================
+2025-11-29 17:45:29,848 - INFO - [START] Kafka Real-time Streaming Pipeline
+2025-11-29 17:45:29,848 - INFO - ======================================================================
+2025-11-29 17:45:29,848 - INFO - [TOPIC] Consuming from: sensor_data
+2025-11-29 17:45:29,849 - INFO - [RULES] Alert rules active: 7
+2025-11-29 17:45:29,849 - INFO - [DATABASE] sqlite:///C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\database\iot_warehouse.db
+2025-11-29 17:45:29,849 - INFO - ======================================================================
+2025-11-29 17:45:29,849 - INFO - [RUNNING] Consumer is active. Press Ctrl+C to stop.
+2025-11-29 17:45:29,850 - INFO - 

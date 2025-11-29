@@ -749,13 +749,12 @@ python control_panel.py
 
 ```powershell
 # Test installation
-python verify_system.py
+python control_panel.py
 
-# Expected output:
-# ✅ Python version: 3.14.x
-# ✅ All dependencies installed
-# ✅ Database initialized
-# ✅ All folders exist
+# Expected: Control Panel GUI opens
+# ✅ All status indicators should be green
+# ✅ Database statistics shown
+# ✅ All components ready
 # ✅ System ready to run
 ```
 
@@ -942,8 +941,8 @@ Browser: Chrome (recommended), Firefox, Edge
 ### Running ML Predictions
 
 ```powershell
-# 1. Ensure sufficient data (30+ days)
-python verify_system.py
+# 1. Check database has sufficient data (30+ days)
+# Open Control Panel to verify
 
 # 2. Train models and generate predictions
 python ml/temperature_predictor.py
@@ -1017,15 +1016,15 @@ copy database\iot_warehouse.db database\backups\manual_backup.db
 ### Verification Script
 
 ```powershell
-python verify_system.py
+python control_panel.py
 ```
 
-**Checks**:
+**Control Panel Checks**:
 - ✅ Python version
-- ✅ Dependencies installed
+- ✅ All components status
 - ✅ Database exists and accessible
-- ✅ Required folders exist
-- ✅ Data files present
+- ✅ Database statistics
+- ✅ System health indicators
 - ✅ Table row counts
 - ✅ Latest data timestamp
 
@@ -1056,9 +1055,7 @@ Latest Data:
 
 #### **Test ML Setup**
 
-```powershell
-python test_ml_setup.py
-```
+Use Control Panel's "Test ML" button.
 
 Tests:
 - Prophet installation
@@ -1105,8 +1102,8 @@ python sensor_generator.py
 # 3. Run ETL
 python etl\batch_etl.py
 
-# 4. Verify data loaded
-python verify_system.py
+# 4. Verify data loaded (use Control Panel)
+# Check database statistics show records
 
 # 5. Start dashboard
 python dashboard\advanced_dashboard.py
@@ -1563,11 +1560,8 @@ For comprehensive troubleshooting, see: **[TROUBLESHOOTING.md](TROUBLESHOOTING.m
 DEPI-Final-Project/
 ├── control_panel.py              # Main GUI (1203 lines)
 ├── sensor_generator.py           # Data generator
-├── verify_system.py              # Health check script
-├── test_ml_setup.py              # ML testing
 ├── requirements.txt              # Python dependencies
 ├── README.md                     # Project overview
-├── START_HERE.bat                # Windows quick start
 ├── database/
 │   ├── __init__.py
 │   ├── schema.py                 # Database schema
@@ -1854,8 +1848,7 @@ python etl/batch_etl.py          # Manual ETL
 python dashboard/advanced_dashboard.py  # Dashboard
 
 # ===== TESTING =====
-python verify_system.py           # System health check
-python test_ml_setup.py          # Test ML installation
+python control_panel.py           # GUI with built-in testing and health checks
 
 # ===== DATABASE =====
 sqlite3 database/iot_warehouse.db # Open SQLite CLI

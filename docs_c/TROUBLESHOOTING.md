@@ -199,9 +199,7 @@ python etl\batch_etl.py
 ETL must run at least once to populate database
 
 **3. Check Database:**
-```powershell
-python verify_system.py
-```
+Open Control Panel and check database statistics.
 Should show row counts > 0
 
 **4. Hard Refresh Browser:**
@@ -518,9 +516,7 @@ Must be run manually (not auto-start)
 **2. Check Sufficient Data:**
 - Need at least 30 days of history
 - Check database has enough readings:
-```powershell
-python verify_system.py
-```
+Open Control Panel and verify database statistics show sufficient records.
 
 **3. Check Prophet Installed:**
 ```powershell
@@ -755,8 +751,9 @@ ERROR: Prophet training failed: insufficient data
 
 ### System Health Check
 ```powershell
-python verify_system.py
+python control_panel.py
 ```
+Check all status indicators in the GUI.
 
 ### Database Status
 ```powershell
@@ -797,7 +794,7 @@ pip list
 
 1. **Read this guide** thoroughly
 2. **Check log files** for specific errors
-3. **Run verify_system.py** to diagnose
+3. **Open Control Panel** to diagnose system status
 4. **Read source code comments** in scripts
 5. **Check README.md** for architecture
 
@@ -812,7 +809,7 @@ When reporting problems, include:
    - Windows version
    - Python version
    - Installed packages (pip list)
-5. **Database stats** (from verify_system.py)
+5. **Database stats** (from Control Panel)
 
 ### Example Issue Report
 
@@ -902,7 +899,7 @@ cProfile.run('your_function_here()')
 
 1. ✅ **Reviewed this guide thoroughly?**
 2. ✅ **Checked all log files?**
-3. ✅ **Ran verify_system.py?**
+3. ✅ **Opened Control Panel?**
 4. ✅ **Tried restarting components?**
 5. ✅ **Tried complete reset?**
 

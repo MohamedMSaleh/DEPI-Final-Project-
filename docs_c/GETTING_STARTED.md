@@ -183,13 +183,13 @@ python ml\temperature_predictor.py
 ### Quick Verification
 
 ```powershell
-python verify_system.py
+python control_panel.py
 ```
 
-This shows:
+The Control Panel GUI shows:
 - ✅ Database tables and row counts
-- ✅ Data files and sizes
-- ✅ System status
+- ✅ Component status indicators
+- ✅ System health
 
 ### Expected Output:
 ```

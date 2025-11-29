@@ -1,48 +1,28 @@
 # Real-time IoT Data Pipeline - Python Dependencies
 # DEPI Final Project - Data Rangers Team
 
-# Core Data Processing
+# ===== CORE DATA PROCESSING =====
 pandas>=2.0.0
 numpy>=1.24.0
 
-# Apache Airflow for Batch ETL Orchestration
-apache-airflow>=2.7.0
-apache-airflow-providers-sqlite>=3.4.0
-
-# Streaming and Azure Services
-azure-eventhub>=5.11.0
-azure-storage-blob>=12.19.0
-azure-identity>=1.15.0
-
-# Data Visualization
-streamlit>=1.28.0
-plotly>=5.17.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
-
-# Database
+# ===== DATABASE =====
 sqlalchemy>=2.0.0
-pyodbc>=5.0.0
 
-# Dashboard
+# ===== DASHBOARD & VISUALIZATION =====
 dash>=2.14.0
-dash-bootstrap-components>=1.5.0
+plotly>=5.17.0
 
-# Task Scheduling
-schedule>=1.2.0
+# ===== FILE MONITORING =====
 watchdog>=6.0.0
 
-# Utilities
-python-dotenv>=1.0.0
-pytz>=2023.3
-
-# Logging and Monitoring
-colorlog>=6.7.0
-
-# Machine Learning - Temperature Prediction
+# ===== MACHINE LEARNING =====
 prophet>=1.1.5
-pystan>=3.9.0
-scikit-learn>=1.3.0
 
-# Testing (optional)
-pytest>=7.4.0
+# ===== SYSTEM MONITORING =====
+psutil>=5.9.0
+
+# ===== PYTHON STANDARD LIBRARY (Built-in - No Installation Needed) =====
+# tkinter - GUI (comes with Python)
+# sqlite3 - Database (comes with Python)
+# json, csv, logging, threading, subprocess - All built-in
+# pathlib, datetime, collections, typing - All built-in

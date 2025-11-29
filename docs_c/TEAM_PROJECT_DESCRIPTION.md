@@ -192,7 +192,7 @@ Data Warehouse → SQL Queries → Dashboard Panels (12)
 **Development Tools**:
 - **Version Control**: Git + GitHub
 - **IDE**: VS Code with Python extensions
-- **Testing**: Custom test scripts (verify_system.py, test_ml_setup.py)
+- **Testing**: Integrated testing via Control Panel GUI
 - **Documentation**: Markdown (5 comprehensive docs)
 
 **Infrastructure**:
@@ -746,11 +746,8 @@ Data Warehouse → SQL Queries → Dashboard Panels (12)
 DEPI-Final-Project/
 ├── control_panel.py              # GUI Control Panel (1,203 lines)
 ├── sensor_generator.py           # IoT Sensor Simulator
-├── verify_system.py              # System Health Check
-├── test_ml_setup.py              # ML Testing Script
 ├── requirements.txt              # Python Dependencies
 ├── README.md                     # Project Overview
-├── START_HERE.bat                # Windows Quick Start
 │
 ├── database/
 │   ├── __init__.py

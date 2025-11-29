@@ -561,7 +561,7 @@ SELECT city_name, AVG(temperature) FROM fact_weather_reading
 ### Troubleshooting
 
 1. **Check logs first** (Control Panel or log files)
-2. **Verify system** with `python verify_system.py`
+2. **Check Control Panel** status indicators
 3. **Restart components** individually before "Restart All"
 4. **Hard refresh browser** for dashboard issues
 5. **Reinstall packages** if import errors
@@ -642,8 +642,8 @@ python dashboard\advanced_dashboard.py
 # Run ML predictor
 python ml\temperature_predictor.py
 
-# Verify system
-python verify_system.py
+# Open Control Panel
+python control_panel.py
 ```
 
 ### Important URLs
