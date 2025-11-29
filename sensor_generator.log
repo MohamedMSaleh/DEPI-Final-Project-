@@ -980,3 +980,7 @@
 2025-11-28 10:42:42,747 [INFO] - Using Kafka for streaming. Also writing to local directory: output
 2025-11-28 10:42:42,749 [INFO] - Starting generator: 10 sensors, 5.0s interval, duration: unlimiteds
 2025-11-28 10:42:42,750 [INFO] - Generating REALISTIC Egyptian weather data suitable for ML models...
+2025-11-29 08:24:00,115 [INFO] - [OK] Connected to Kafka broker, topic: sensor_data
+2025-11-29 08:24:00,117 [INFO] - Using Kafka for streaming. Also writing to local directory: output
+2025-11-29 08:24:00,120 [INFO] - Starting generator: 10 sensors, 5.0s interval, duration: unlimiteds
+2025-11-29 08:24:00,120 [INFO] - Generating REALISTIC Egyptian weather data suitable for ML models...

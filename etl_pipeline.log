@@ -28,3 +28,10 @@
 2025-11-28 10:43:25,154 - INFO - Records skipped (duplicates/invalid): 6113
 2025-11-28 10:43:25,244 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
 2025-11-28 10:43:25,244 - INFO - Batch ETL pipeline complete
+2025-11-29 08:24:05,999 - INFO - Starting batch ETL job
+2025-11-29 08:24:06,000 - INFO - Input CSV: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.csv
+2025-11-29 08:24:06,001 - INFO - Input JSONL: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\output\sensor_data.jsonl
+2025-11-29 08:24:42,209 - INFO - Records inserted: 240
+2025-11-29 08:24:42,211 - INFO - Records skipped (duplicates/invalid): 6962
+2025-11-29 08:24:42,270 - INFO - Saved aggregates to: C:\Users\mahmo\OneDrive\Desktop\DEPI\DEPI-Final-Project-\processed\hourly_aggregates.csv
+2025-11-29 08:24:42,271 - INFO - Batch ETL pipeline complete
